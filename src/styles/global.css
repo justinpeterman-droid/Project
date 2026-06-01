@@ -144,6 +144,19 @@
       );
   }
 
+  /* Frosted panel behind hero copy — keeps photo visible, text readable */
+  .hero-copy-scrim {
+    background: color-mix(in srgb, var(--color-canvas) 52%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--color-cream) 70%, transparent);
+  }
+
+  .hero-copy-scrim h1,
+  .hero-copy-scrim p {
+    text-shadow: 0 1px 12px color-mix(in srgb, var(--color-canvas) 85%, transparent);
+  }
+
   /* Scroll-reveal: starts hidden, animates in when .is-visible added by JS */
   .reveal {
     opacity: 0;

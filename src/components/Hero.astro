@@ -13,19 +13,15 @@ import Picture from "./Picture.astro";
       base={images.hero.base}
       alt=""
       loading="eager"
-      class="h-full w-full object-cover object-[center_40%]"
+      class="h-full w-full object-cover object-[center_40%] saturate-[1.06]"
     />
   </div>
   <div
-    class="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas/62 via-canvas/38 to-canvas/68"
+    class="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas/45 via-canvas/15 to-canvas/50"
     aria-hidden="true"
   ></div>
   <div
-    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/75 via-transparent to-transparent"
-    aria-hidden="true"
-  ></div>
-  <div
-    class="pointer-events-none absolute inset-0 glow-warm opacity-35 mix-blend-soft-light"
+    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/58 via-transparent to-canvas/25"
     aria-hidden="true"
   ></div>
   <div
@@ -34,7 +30,9 @@ import Picture from "./Picture.astro";
   ></div>
 
   <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
-    <div class="mx-auto max-w-4xl text-center">
+    <div
+      class="hero-copy-scrim mx-auto max-w-4xl rounded-[2rem] px-5 py-10 text-center sm:px-10 sm:py-12"
+    >
       <p class="reveal eyebrow">Holistic hypnotherapy &amp; behavioral coaching</p>
       <h1
         id="hero-heading"
@@ -67,7 +65,7 @@ import Picture from "./Picture.astro";
     </div>
 
     <div
-      class="reveal reveal-delay-5 mx-auto mt-20 grid max-w-3xl gap-6 border-t border-sand/80 pt-12 sm:grid-cols-3 sm:gap-8"
+      class="hero-copy-scrim reveal reveal-delay-5 mx-auto mt-12 grid max-w-3xl gap-6 rounded-2xl px-4 py-8 sm:grid-cols-3 sm:px-6"
     >
       <div class="text-center">
         <p class="font-display text-3xl text-sage-deep">5</p>
