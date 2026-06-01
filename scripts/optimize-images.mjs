@@ -18,10 +18,15 @@ const map = {
     width: 2000,
     quality: 82,
   },
-  "f7dfb4b95c2a2a07829bfa89124c4101.jpg": {
+  "b28da9831ef319794b2a906abc0ccb5e.jpg": {
     name: "about-ashley",
+    width: 1066,
+    quality: 88,
+  },
+  "f7dfb4b95c2a2a07829bfa89124c4101.jpg": {
+    name: "service-somatic-alt",
     width: 1200,
-    quality: 85,
+    quality: 82,
   },
   "4acca0f39162aa4f504896d4603935e0.jpg": {
     name: "service-hypnotherapy",
@@ -41,11 +46,6 @@ const map = {
   },
   "36bb3c3190f4708d9345b36a01cbe596.jpg": {
     name: "service-somatic",
-    width: 1200,
-    quality: 82,
-  },
-  "f0b45c0b9a80f12766d4cc76a15a6519.jpg": {
-    name: "service-somatic-alt",
     width: 1200,
     quality: 82,
   },
