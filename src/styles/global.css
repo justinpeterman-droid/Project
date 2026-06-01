@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   Hometown Serenity — Design System
+   High-end, calm wellness aesthetic.
+   Palette: warm ivory canvas, botanical sage, terracotta clay, luxe gold,
+   deep loam ink. Type: Fraunces (display serif) + DM Sans (body).
+   ========================================================================= */
+
+@theme {
+  /* Surfaces */
+  --color-canvas: #fbf8f3; /* page background — warm ivory */
+  --color-linen: #f2ebdf; /* alternate section background */
+  --color-sand: #e6dac8; /* soft borders / fills */
+  --color-cream: #fdfbf7; /* cards / elevated surfaces */
+
+  /* Botanical greens */
+  --color-sage: #8c9a86;
+  --color-sage-deep: #5b6a56;
+  --color-forest: #28342a; /* dark sections */
+  --color-forest-2: #1f2a21;
+
+  /* Warm accents */
+  --color-clay: #bd7b53; /* primary CTA terracotta */
+  --color-clay-deep: #a3623c; /* CTA hover */
+  --color-gold: #c2a24c; /* luxe hairlines / small accents */
+
+  /* Ink */
+  --color-ink: #20190f; /* headings */
+  --color-loam: #382c1f; /* body text */
+  --color-muted: #6f6354; /* secondary text */
+  --color-faint: #a99a86; /* tertiary / captions */
+
+  /* Typography */
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Shadows — soft, diffuse, premium */
+  --shadow-soft: 0 1px 2px rgba(32, 25, 15, 0.04),
+    0 8px 24px rgba(32, 25, 15, 0.06);
+  --shadow-lift: 0 2px 4px rgba(32, 25, 15, 0.05),
+    0 18px 48px rgba(32, 25, 15, 0.1);
+
+  /* Easing */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------------ base */
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem; /* offset for sticky header anchors */
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-loam);
+    font-family: var(--font-body);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-clay) 28%, transparent);
+    color: var(--color-ink);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-clay-deep);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ------------------------------------------------------- utility helpers */
+@layer utilities {
+  /* Editorial wrapping */
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Decorative kicker / eyebrow label */
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-clay-deep);
+  }
+
+  /* Hairline divider */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--color-gold) 60%, transparent),
+      transparent
+    );
+  }
+
+  /* Grain/texture-free soft radial glow for hero */
+  .glow-warm {
+    background-image: radial-gradient(
+        60% 50% at 50% 0%,
+        color-mix(in srgb, var(--color-gold) 18%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        50% 60% at 85% 30%,
+        color-mix(in srgb, var(--color-sage) 22%, transparent),
+        transparent 70%
+      );
+  }
+
+  /* Scroll-reveal: starts hidden, animates in when .is-visible added by JS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.9s var(--ease-out-soft),
+      transform 0.9s var(--ease-out-soft);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  .reveal-delay-3 { transition-delay: 0.24s; }
+  .reveal-delay-4 { transition-delay: 0.32s; }
+  .reveal-delay-5 { transition-delay: 0.4s; }
+}
+
+/* --------------------------------------------------------- reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

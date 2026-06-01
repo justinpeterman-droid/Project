@@ -1,0 +1,21 @@
+{
+  "name": "hometown-serenity",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Hometown Serenity — landing site for Ashley Romero, CMH, CAHA",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^5.18.2",
+    "tailwindcss": "^4.3.0"
+  }
+}

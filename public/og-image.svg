@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Hometown Serenity">
+  <rect width="1200" height="630" fill="#fbf8f3" />
+  <rect width="1200" height="630" fill="url(#g)" />
+  <defs>
+    <radialGradient id="g" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#c2a24c" stop-opacity="0.18" />
+      <stop offset="55%" stop-color="#fbf8f3" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="600" cy="232" r="78" fill="none" stroke="#c2a24c" stroke-width="3" />
+  <path d="M0 520 Q300 470 600 510 T1200 500 V630 H0 Z" fill="#8c9a86" opacity="0.9" />
+  <path d="M0 560 Q320 520 640 552 T1200 545 V630 H0 Z" fill="#5b6a56" />
+  <text x="600" y="400" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="74" fill="#20190f" letter-spacing="1">Hometown Serenity</text>
+  <text x="600" y="452" text-anchor="middle" font-family="'DM Sans', system-ui, sans-serif" font-size="27" fill="#6f6354" letter-spacing="5">ASHLEY ROMERO · CMH, CAHA</text>
+  <text x="600" y="600" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="26" fill="#a3623c">Its not about being fixed. Its about being found.</text>
+</svg>
