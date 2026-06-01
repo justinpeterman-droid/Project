@@ -1,5 +1,12 @@
 # Hometown Serenity — Landing Page
 
+| | |
+|---|---|
+| **Version** | 1.1.0 |
+| **Last updated** | 2026-06-01 |
+| **Status** | Implemented in Astro — DNS not cut over |
+| **Implementation** | [IMPLEMENTATION.md](./IMPLEMENTATION.md) |
+
 Product and build specification for the **HometownSerenity.com** marketing site. This document captures brand positioning, contact details, external integrations, page structure, and Netlify deployment requirements.
 
 ---
@@ -30,18 +37,21 @@ Use `tel:` and `mailto:` links in the header, footer, and mobile sticky CTA bar.
 
 ## Booking and sessions
 
-Both CTAs currently point to the same Google Calendar appointment page. The landing page should expose them as distinct labels even if the URL is shared until separate event types exist.
+**Preferred scheduler:** [Calendly](https://calendly.com) — replace the placeholder URL in `src/data/site.ts` when the Calendly link is ready.
 
-| Action | Label (UI) | URL |
-|--------|------------|-----|
+Until Calendly is configured, both CTAs use the working Google Calendar appointment page:
+
+| Action | Label (UI) | URL (interim) |
+|--------|------------|---------------|
 | Discovery call | Book a discovery call | [Google Calendar](https://calendar.app.google/cRjyQ2t3FXPMPLSC7) |
 | 1:1 session | Book a 1:1 session | [Google Calendar](https://calendar.app.google/cRjyQ2t3FXPMPLSC7) |
 
 **Implementation notes**
 
-- Primary hero CTA: **Book a discovery call** → open calendar in a new tab or embed if Google Appointment Scheduling allows iframe on custom domain.
-- Secondary CTA (services section or sticky bar): **Book a 1:1 session** → same URL for now; update when a dedicated 1:1 calendar link is available.
-- Consider a short FAQ under booking: what happens on a discovery call, session length, virtual vs in-person, and how to prepare.
+- Primary hero CTA: **Book a discovery call** → opens scheduler in a new tab.
+- Secondary CTA: **Book a 1:1 session** → same URL until separate Calendly event types exist.
+- FAQ accordion covers discovery call, therapy vs coaching, modalities, and session format.
+- **Do not redirect DNS** to Netlify until stakeholders approve the Netlify preview deploy.
 
 ---
 

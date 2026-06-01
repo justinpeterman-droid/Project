@@ -1,0 +1,90 @@
+---
+import { site, contact, nav, social, legal } from "../data/site";
+import Compliance from "./Compliance.astro";
+---
+
+<footer class="border-t border-sand bg-linen">
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-2">
+        <p class="font-display text-2xl text-ink">{site.name}</p>
+        <p class="mt-2 text-sm text-muted">
+          {site.practitioner}, {site.credentials}
+        </p>
+        <p class="mt-4 max-w-md text-pretty text-sm leading-relaxed text-loam">
+          Identity reconstruction through integrative hypnotherapy, NLP, sound
+          healing, somatic movement, and holistic nutrition.
+        </p>
+      </div>
+
+      <div>
+        <p class="eyebrow mb-4">Explore</p>
+        <ul class="space-y-2 text-sm">
+          {
+            nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-loam transition hover:text-clay-deep"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href="/privacy" class="text-loam transition hover:text-clay-deep"
+              >Privacy</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="eyebrow mb-4">Contact</p>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a
+              href={contact.phoneHref}
+              class="font-medium text-ink hover:text-clay-deep"
+              >{contact.phone}</a
+            >
+          </li>
+          <li>
+            <a
+              href={contact.emailHref}
+              class="break-all text-loam hover:text-clay-deep"
+              >{contact.email}</a
+            >
+          </li>
+        </ul>
+        <p class="eyebrow mb-3 mt-8">Follow</p>
+        <ul class="space-y-2 text-sm">
+          {
+            social
+              .filter((s) => s.group === "primary")
+              .map((s) => (
+                <li>
+                  <a
+                    href={s.url}
+                    class="text-loam hover:text-clay-deep"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {s.label}
+                    {s.handle ? ` · ${s.handle}` : ""}
+                  </a>
+                </li>
+              ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="hairline my-10"></div>
+
+    <Compliance compact />
+
+    <p class="mt-8 text-center text-xs text-faint">{legal.copyright}</p>
+  </div>
+</footer>

@@ -32,9 +32,10 @@ export const contact = {
  * Single booking source. Calendly-ready: replace `url` with the Calendly link.
  * Both the discovery call and 1:1 session currently share the same scheduler.
  */
+/** Replace `url` with your Calendly link when ready; all CTAs read from here. */
 export const booking = {
   url: "https://calendar.app.google/cRjyQ2t3FXPMPLSC7",
-  platform: "Google Calendar", // → "Calendly" once link is supplied
+  platform: "Google Calendar (switch to Calendly when URL is set)",
   discovery: {
     label: "Book a discovery call",
     short: "Discovery call",

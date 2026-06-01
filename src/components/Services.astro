@@ -1,0 +1,79 @@
+---
+import { services, booking } from "../data/site";
+import Button from "./Button.astro";
+---
+
+<section
+  id="services"
+  class="scroll-mt-24 py-24 sm:py-32"
+  aria-labelledby="services-heading"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <p class="reveal eyebrow">Services</p>
+        <h2
+          id="services-heading"
+          class="reveal reveal-delay-1 mt-4 font-display text-3xl text-balance text-ink sm:text-4xl md:text-5xl"
+        >
+          An integrative path to your center
+        </h2>
+        <p class="reveal reveal-delay-2 mt-6 text-pretty text-lg text-muted">
+          Modern behavioral science and ancient somatic wisdom — woven together
+          around what you actually need.
+        </p>
+      </div>
+      <div class="reveal reveal-delay-2 shrink-0">
+        <Button href={booking.url} variant="secondary" external>
+          {booking.session.label}
+        </Button>
+      </div>
+    </div>
+
+    <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-2 lg:gap-5">
+      {
+        services.map((service, i) => (
+          <article
+            class:list={[
+              "reveal group flex flex-col justify-between rounded-2xl border border-sand/70 bg-cream p-7 shadow-soft transition hover:border-sage/40 hover:shadow-lift",
+              service.featured
+                ? "sm:col-span-2 lg:col-span-3 lg:row-span-2 lg:p-10"
+                : "lg:col-span-3",
+              `reveal-delay-${Math.min((i % 5) + 1, 5)}`,
+            ]}
+          >
+            <div>
+              {service.featured && (
+                <p class="eyebrow mb-4 text-sage-deep">Signature modality</p>
+              )}
+              <h3
+                class:list={[
+                  "font-display leading-snug text-ink",
+                  service.featured ? "text-2xl sm:text-3xl" : "text-xl",
+                ]}
+              >
+                {service.name}
+              </h3>
+              <p
+                class:list={[
+                  "mt-4 text-pretty leading-relaxed text-muted",
+                  service.featured ? "text-base" : "text-sm",
+                ]}
+              >
+                {service.summary}
+              </p>
+              {service.featured && (
+                <p class="mt-4 text-pretty text-sm leading-relaxed text-loam/90">
+                  {service.detail}
+                </p>
+              )}
+            </div>
+            {!service.featured && (
+              <p class="mt-6 text-xs leading-relaxed text-faint">{service.detail}</p>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,19 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { site } from "../data/site";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Philosophy from "../components/Philosophy.astro";
+import Services from "../components/Services.astro";
+import Mirror from "../components/Mirror.astro";
+import About from "../components/About.astro";
+import Resources from "../components/Resources.astro";
+import Booking from "../components/Booking.astro";
+import FAQ from "../components/FAQ.astro";
+import Connect from "../components/Connect.astro";
+import Footer from "../components/Footer.astro";
+import MobileCTA from "../components/MobileCTA.astro";
 ---
 
 <Layout path="/">
-  <main id="main" class="mx-auto max-w-3xl px-6 py-32 text-center">
-    <p class="eyebrow">Foundation smoke test</p>
-    <h1 class="mt-4 text-5xl text-balance">{site.name}</h1>
-    <p class="mt-6 font-display text-2xl italic text-muted">{site.tagline}</p>
-    <p class="mt-10">
-      <a
-        href={site.url}
-        class="inline-flex items-center gap-2 rounded-full bg-clay px-7 py-3.5 font-body text-sm font-semibold tracking-wide text-cream shadow-soft transition hover:bg-clay-deep"
-        >Primary button preview</a
-      >
-    </p>
+  <Header />
+  <main id="main">
+    <Hero />
+    <Philosophy />
+    <Services />
+    <Mirror />
+    <About />
+    <Resources />
+    <Booking />
+    <FAQ />
+    <Connect />
   </main>
+  <Footer />
+  <MobileCTA />
 </Layout>

@@ -1,0 +1,38 @@
+---
+import { mirror, booking } from "../data/site";
+import Button from "./Button.astro";
+---
+
+<section class="relative overflow-hidden bg-forest py-24 text-cream sm:py-32">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-30"
+    style="background: radial-gradient(ellipse 80% 60% at 50% 100%, #8c9a86 0%, transparent 70%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
+    <p class="reveal eyebrow text-gold/90">Reflection</p>
+    <h2
+      class="reveal reveal-delay-1 mt-4 font-display text-3xl text-balance sm:text-4xl md:text-5xl"
+    >
+      {mirror.heading}
+    </h2>
+    {
+      mirror.body.map((para, i) => (
+        <p
+          class:list={[
+            "reveal mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-cream/85",
+            `reveal-delay-${i + 2}`,
+          ]}
+        >
+          {para}
+        </p>
+      ))
+    }
+    <div class="reveal reveal-delay-4 mt-12">
+      <Button href={booking.url} variant="light" size="lg" external>
+        Turn up the volume on that voice
+      </Button>
+    </div>
+  </div>
+</section>

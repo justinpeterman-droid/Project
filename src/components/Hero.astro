@@ -1,0 +1,76 @@
+---
+import { site, booking } from "../data/site";
+import Button from "./Button.astro";
+---
+
+<section
+  class="relative min-h-[92vh] overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-32"
+  aria-labelledby="hero-heading"
+>
+  <div class="pointer-events-none absolute inset-0 glow-warm" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute -right-24 top-20 h-96 w-96 rounded-full bg-sage/15 blur-3xl"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -left-16 bottom-0 h-80 w-80 rounded-full bg-gold/10 blur-3xl"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="reveal eyebrow">Holistic hypnotherapy &amp; behavioral coaching</p>
+      <h1
+        id="hero-heading"
+        class="reveal reveal-delay-1 mt-6 font-display text-4xl leading-[1.05] text-balance text-ink sm:text-5xl md:text-6xl lg:text-[3.75rem]"
+      >
+        {site.tagline}
+      </h1>
+      <p
+        class="reveal reveal-delay-2 mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
+      >
+        Beyond the roles of parent, spouse, or professional lies a vibrant identity
+        waiting to be rediscovered. At Hometown Serenity, we move past the weight of
+        "fixing" to find the extraordinary rhythm already within you.
+      </p>
+
+      <div
+        class="reveal reveal-delay-3 mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+      >
+        <Button href={booking.url} variant="primary" size="lg" external>
+          {booking.discovery.label}
+        </Button>
+        <Button href="#services" variant="secondary" size="lg">
+          Explore the integrative path
+        </Button>
+      </div>
+
+      <p class="reveal reveal-delay-4 mt-14 font-display text-xl italic text-clay-deep sm:text-2xl">
+        You are more than the titles you hold
+      </p>
+    </div>
+
+    <div
+      class="reveal reveal-delay-5 mx-auto mt-20 grid max-w-3xl gap-6 border-t border-sand/80 pt-12 sm:grid-cols-3 sm:gap-8"
+    >
+      <div class="text-center">
+        <p class="font-display text-3xl text-sage-deep">5</p>
+        <p class="mt-1 text-xs font-medium uppercase tracking-widest text-faint">
+          Integrative modalities
+        </p>
+      </div>
+      <div class="text-center">
+        <p class="font-display text-3xl text-sage-deep">1:1</p>
+        <p class="mt-1 text-xs font-medium uppercase tracking-widest text-faint">
+          Personalized sessions
+        </p>
+      </div>
+      <div class="text-center">
+        <p class="font-display text-3xl text-sage-deep">∞</p>
+        <p class="mt-1 text-xs font-medium uppercase tracking-widest text-faint">
+          Your rhythm, your pace
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import { philosophy } from "../data/site";
+---
+
+<section
+  id="philosophy"
+  class="scroll-mt-24 bg-linen py-24 sm:py-32"
+  aria-labelledby="philosophy-heading"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="reveal eyebrow">Philosophy</p>
+      <h2
+        id="philosophy-heading"
+        class="reveal reveal-delay-1 mt-4 font-display text-3xl text-balance text-ink sm:text-4xl md:text-5xl"
+      >
+        A gentler way back to yourself
+      </h2>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
+      {
+        philosophy.map((item, i) => (
+          <article
+            class:list={[
+              "reveal rounded-2xl border border-sand/70 bg-cream p-8 shadow-soft transition hover:shadow-lift",
+              `reveal-delay-${Math.min(i + 1, 5)}`,
+            ]}
+          >
+            <span
+              class="flex h-10 w-10 items-center justify-center rounded-full bg-sage/15 font-display text-lg text-sage-deep"
+              aria-hidden="true"
+            >
+              {i + 1}
+            </span>
+            <h3 class="mt-6 font-display text-xl leading-snug text-ink">
+              {item.title}
+            </h3>
+            <p class="mt-4 text-pretty text-sm leading-relaxed text-muted">
+              {item.body}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

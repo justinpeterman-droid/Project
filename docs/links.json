@@ -1,4 +1,11 @@
 {
+  "meta": {
+    "version": "1.1.0",
+    "lastUpdated": "2026-06-01",
+    "bookingPlatformPreferred": "Calendly",
+    "bookingPlatformActive": "Google Calendar",
+    "dnsCutover": false
+  },
   "brand": {
     "name": "Hometown Serenity",
     "practitioner": "Ashley Romero, CMH, CAHA",
@@ -14,11 +21,13 @@
   "booking": {
     "discoveryCall": {
       "label": "Book a discovery call",
-      "url": "https://calendar.app.google/cRjyQ2t3FXPMPLSC7"
+      "url": "https://calendar.app.google/cRjyQ2t3FXPMPLSC7",
+      "calendlyUrlPlaceholder": "https://calendly.com/YOUR-HANDLE/discovery"
     },
     "oneOnOneSession": {
       "label": "Book a 1:1 session",
-      "url": "https://calendar.app.google/cRjyQ2t3FXPMPLSC7"
+      "url": "https://calendar.app.google/cRjyQ2t3FXPMPLSC7",
+      "calendlyUrlPlaceholder": "https://calendly.com/YOUR-HANDLE/session"
     }
   },
   "social": {

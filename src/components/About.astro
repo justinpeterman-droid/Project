@@ -1,0 +1,87 @@
+---
+import { site, about, contact } from "../data/site";
+import Button from "./Button.astro";
+---
+
+<section
+  id="about"
+  class="scroll-mt-24 bg-linen py-24 sm:py-32"
+  aria-labelledby="about-heading"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="grid items-start gap-14 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <div
+          class="reveal relative mx-auto aspect-[4/5] max-w-sm overflow-hidden rounded-2xl border border-sand bg-gradient-to-br from-linen via-cream to-sage/20 shadow-lift lg:mx-0"
+        >
+          <div
+            class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center"
+          >
+            <div
+              class="flex h-24 w-24 items-center justify-center rounded-full border-2 border-gold/40 bg-cream/80"
+              aria-hidden="true"
+            >
+              <span class="font-display text-4xl text-sage-deep">AR</span>
+            </div>
+            <p class="mt-6 text-sm font-medium text-muted">Headshot coming soon</p>
+            <p class="mt-2 font-display text-lg italic text-clay-deep">
+              {about.closing}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <p class="reveal eyebrow">About</p>
+        <h2
+          id="about-heading"
+          class="reveal reveal-delay-1 mt-4 font-display text-3xl text-balance text-ink sm:text-4xl"
+        >
+          {about.heading}
+        </h2>
+
+        <blockquote
+          class="reveal reveal-delay-2 mt-8 border-l-2 border-gold/60 pl-6 font-display text-xl italic leading-relaxed text-loam sm:text-2xl"
+        >
+          "{about.quote}"
+        </blockquote>
+
+        {
+          about.body.map((para, i) => (
+            <p
+              class:list={[
+                "reveal mt-6 text-pretty leading-relaxed text-muted",
+                `reveal-delay-${i + 3}`,
+              ]}
+            >
+              {para}
+            </p>
+          ))
+        }
+
+        <div class="reveal reveal-delay-4 mt-10">
+          <p class="eyebrow mb-4">Credentials &amp; training</p>
+          <ul class="grid gap-3 sm:grid-cols-2">
+            {
+              about.credentials.map((cred) => (
+                <li class="flex gap-3 rounded-xl border border-sand/60 bg-cream px-4 py-3 text-sm text-loam">
+                  <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-clay" aria-hidden="true"></span>
+                  {cred}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-5 mt-10 flex flex-wrap gap-4">
+          <Button href={contact.emailHref} variant="secondary">
+            Email Ashley
+          </Button>
+          <Button href={contact.phoneHref} variant="ghost">
+            {contact.phone}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,100 @@
+---
+import { booking, contact } from "../data/site";
+import Button from "./Button.astro";
+import Compliance from "./Compliance.astro";
+---
+
+<section
+  id="book"
+  class="scroll-mt-24 bg-linen py-24 sm:py-32"
+  aria-labelledby="book-heading"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div
+      class="reveal overflow-hidden rounded-3xl border border-sand/80 bg-cream shadow-lift"
+    >
+      <div class="grid lg:grid-cols-2">
+        <div class="p-8 sm:p-12 lg:p-14">
+          <p class="eyebrow">Schedule</p>
+          <h2
+            id="book-heading"
+            class="mt-4 font-display text-3xl text-balance text-ink sm:text-4xl md:text-5xl"
+          >
+            Your rhythm is waiting
+          </h2>
+          <p class="mt-6 text-pretty text-lg leading-relaxed text-muted">
+            Identity reconstruction doesn't have to be a journey you navigate
+            alone. Whether you're ready to dive deep into hypnotherapy or simply
+            want to explore how to find the extraordinary in your ordinary day, I
+            am here to support your flow.
+          </p>
+
+          <div class="mt-10 space-y-4">
+            <div class="rounded-2xl border border-sand/60 bg-canvas/80 p-6">
+              <h3 class="font-display text-lg text-ink">
+                {booking.discovery.short}
+              </h3>
+              <p class="mt-2 text-sm text-muted">{booking.discovery.blurb}</p>
+              <div class="mt-5">
+                <Button href={booking.url} variant="primary" external class="w-full sm:w-auto">
+                  {booking.discovery.label}
+                </Button>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-sand/60 bg-canvas/80 p-6">
+              <h3 class="font-display text-lg text-ink">{booking.session.short}</h3>
+              <p class="mt-2 text-sm text-muted">{booking.session.blurb}</p>
+              <div class="mt-5">
+                <Button href={booking.url} variant="secondary" external class="w-full sm:w-auto">
+                  {booking.session.label}
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-8 text-xs leading-relaxed text-faint">
+            Scheduling opens in a new window via {booking.platform}. When your
+            Calendly link is ready, all buttons on this site will point there —
+            update <code class="rounded bg-sand/50 px-1 py-0.5 text-[0.7rem]">src/data/site.ts</code> only.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col justify-between border-t border-sand/60 bg-gradient-to-br from-forest to-forest-2 p-8 text-cream sm:p-12 lg:border-t-0 lg:border-l"
+        >
+          <div>
+            <p class="text-sm font-medium uppercase tracking-widest text-gold/80">
+              Prefer to reach out first?
+            </p>
+            <ul class="mt-8 space-y-6">
+              <li>
+                <p class="text-xs uppercase tracking-wider text-cream/50">Phone</p>
+                <a
+                  href={contact.phoneHref}
+                  class="mt-1 block font-display text-2xl hover:text-gold"
+                  >{contact.phone}</a
+                >
+              </li>
+              <li>
+                <p class="text-xs uppercase tracking-wider text-cream/50">Email</p>
+                <a
+                  href={contact.emailHref}
+                  class="mt-1 block text-lg break-all hover:text-gold"
+                  >{contact.email}</a
+                >
+              </li>
+            </ul>
+          </div>
+          <p class="mt-12 font-display text-xl italic text-cream/80">
+            Allow the veil to lift. The light was always there.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <Compliance />
+    </div>
+  </div>
+</section>

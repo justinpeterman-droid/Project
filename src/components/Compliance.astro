@@ -1,0 +1,28 @@
+---
+import { legal } from "../data/site";
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<aside
+  class:list={[
+    "rounded-2xl border border-sand/80 bg-cream/60",
+    compact ? "p-5 text-left" : "mx-auto max-w-3xl p-6 sm:p-8 text-center",
+  ]}
+  role="note"
+  aria-label="Wellness services disclaimer"
+>
+  <p class="eyebrow mb-2">Important notice</p>
+  <p
+    class:list={[
+      "text-pretty leading-relaxed text-muted",
+      compact ? "text-xs" : "text-sm",
+    ]}
+  >
+    {legal.disclaimer}
+  </p>
+</aside>

@@ -1,0 +1,25 @@
+---
+import { booking } from "../data/site";
+---
+
+<div
+  class="fixed inset-x-0 bottom-0 z-40 border-t border-sand/80 bg-canvas/95 p-3 backdrop-blur-md sm:hidden"
+  aria-label="Quick actions"
+>
+  <div class="mx-auto flex max-w-lg gap-2">
+    <a
+      href={booking.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex-1 rounded-full bg-clay py-3.5 text-center text-sm font-semibold text-cream shadow-lift"
+    >
+      {booking.discovery.short}
+    </a>
+    <a
+      href="#services"
+      class="rounded-full border border-sand bg-cream px-5 py-3.5 text-sm font-semibold text-ink"
+    >
+      Services
+    </a>
+  </div>
+</div>

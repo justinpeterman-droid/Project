@@ -1,0 +1,88 @@
+---
+import { social } from "../data/site";
+---
+
+<section
+  id="connect"
+  class="scroll-mt-24 border-t border-sand bg-canvas py-24 sm:py-32"
+  aria-labelledby="connect-heading"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="reveal eyebrow">Connect</p>
+      <h2
+        id="connect-heading"
+        class="reveal reveal-delay-1 mt-4 font-display text-3xl text-ink sm:text-4xl"
+      >
+        Stay in the conversation
+      </h2>
+    </div>
+
+    <div class="mt-14 grid gap-8 lg:grid-cols-2">
+      <div class="reveal reveal-delay-2">
+        <p class="mb-5 text-xs font-semibold uppercase tracking-widest text-faint">
+          Hometown Serenity
+        </p>
+        <ul class="space-y-4">
+          {
+            social
+              .filter((s) => s.group === "primary")
+              .map((s) => (
+                <li>
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group flex items-center justify-between rounded-2xl border border-sand/70 bg-cream px-6 py-5 transition hover:border-sage/50 hover:shadow-soft"
+                  >
+                    <div>
+                      <p class="font-medium text-ink">{s.label}</p>
+                      {s.handle && (
+                        <p class="mt-0.5 text-sm text-muted">{s.handle}</p>
+                      )}
+                    </div>
+                    <span
+                      class="text-clay-deep transition group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </a>
+                </li>
+              ))
+          }
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <p class="mb-5 text-xs font-semibold uppercase tracking-widest text-faint">
+          Inked Integration · writing &amp; media
+        </p>
+        <ul class="space-y-4">
+          {
+            social
+              .filter((s) => s.group !== "primary")
+              .map((s) => (
+                <li>
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group flex items-center justify-between rounded-2xl border border-sand/70 bg-linen px-6 py-5 transition hover:border-clay/30"
+                  >
+                    <div>
+                      <p class="font-medium text-ink">{s.label}</p>
+                      {s.handle && (
+                        <p class="mt-0.5 text-sm text-muted">{s.handle}</p>
+                      )}
+                    </div>
+                    <span class="text-muted" aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

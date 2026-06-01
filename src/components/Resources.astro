@@ -1,0 +1,76 @@
+---
+import { resources } from "../data/site";
+
+const icons: Record<string, string> = {
+  download: "M12 3v12m0 0l4-4m-4 4l-4-4M4 19h16",
+  app: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z",
+  form: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+};
+---
+
+<section
+  id="resources"
+  class="scroll-mt-24 py-24 sm:py-32"
+  aria-labelledby="resources-heading"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="reveal eyebrow">Resources</p>
+      <h2
+        id="resources-heading"
+        class="reveal reveal-delay-1 mt-4 font-display text-3xl text-balance text-ink sm:text-4xl"
+      >
+        Tools for the journey between sessions
+      </h2>
+      <p class="reveal reveal-delay-2 mt-6 text-pretty text-muted">
+        Journals, client spaces, and forms — designed to support your flow at your
+        own pace.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {
+        resources.map((item, i) => (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+              "reveal group flex flex-col rounded-2xl border border-sand/70 bg-cream p-8 shadow-soft transition hover:-translate-y-0.5 hover:border-clay/30 hover:shadow-lift",
+              `reveal-delay-${i + 1}`,
+            ]}
+          >
+            <span
+              class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-sage/15 text-sage-deep transition group-hover:bg-clay/15 group-hover:text-clay-deep"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d={icons[item.kind] ?? icons.form}
+                />
+              </svg>
+            </span>
+            <h3 class="mt-6 font-display text-xl text-ink">{item.title}</h3>
+            <p class="mt-3 flex-1 text-pretty text-sm leading-relaxed text-muted">
+              {item.description}
+            </p>
+            <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-clay-deep">
+              {item.cta}
+              <span aria-hidden="true" class="transition group-hover:translate-x-0.5"
+                >→</span
+              >
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
