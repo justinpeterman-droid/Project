@@ -157,6 +157,71 @@
     text-shadow: 0 1px 12px color-mix(in srgb, var(--color-canvas) 85%, transparent);
   }
 
+  .hero-stat {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-sand) 85%, transparent);
+    background: color-mix(in srgb, var(--color-cream) 92%, transparent);
+    padding: 1.35rem 1rem 1.25rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.45s var(--ease-out-soft),
+      border-color 0.45s var(--ease-out-soft),
+      box-shadow 0.45s var(--ease-out-soft);
+  }
+
+  .hero-stat::before {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    margin: 0 auto 0.85rem;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold),
+      transparent
+    );
+    transform: scaleX(0);
+    opacity: 0;
+    transition: transform 0.55s var(--ease-out-soft),
+      opacity 0.55s var(--ease-out-soft);
+  }
+
+  .hero-stat.is-visible::before {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .hero-stat.is-visible .hero-stat-value {
+    animation: hero-stat-pop 0.75s var(--ease-out-soft) both;
+  }
+
+  .hero-stat.is-visible .hero-stat-label {
+    animation: hero-stat-pop 0.75s var(--ease-out-soft) 0.12s both;
+  }
+
+  .hero-stat:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--color-clay) 35%, var(--color-sand));
+    box-shadow: var(--shadow-lift);
+  }
+
+  @keyframes hero-stat-pop {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.94);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   /* Scroll-reveal: starts hidden, animates in when .is-visible added by JS */
   .reveal {
     opacity: 0;
@@ -185,6 +250,18 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  .hero-stat.is-visible .hero-stat-value,
+  .hero-stat.is-visible .hero-stat-label {
+    animation: none !important;
+  }
+  .hero-stat::before {
+    transform: scaleX(1);
+    opacity: 1;
+    transition: none;
+  }
+  .hero-stat:hover {
+    transform: none;
   }
   *,
   *::before,
