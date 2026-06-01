@@ -21,6 +21,26 @@ export const site = {
   location: "Arkansas, United States",
 } as const;
 
+/** Optimized images exported from the original Canva site (see scripts/optimize-images.mjs). */
+export const images = {
+  hero: {
+    base: "/images/hero",
+    alt: "Sunset landscape with trees — calm horizon at dusk",
+  },
+  philosophyForest: {
+    base: "/images/philosophy-forest",
+    alt: "Sunlight through forest trees",
+  },
+  mirrorWaterfall: {
+    base: "/images/mirror-waterfall",
+    alt: "Waterfall surrounded by lush green forest",
+  },
+  aboutAshley: {
+    base: "/images/about-ashley",
+    alt: "Ashley Romero, Certified Master Hypnotherapist",
+  },
+} as const;
+
 export const contact = {
   phone: "870-750-1275",
   phoneHref: "tel:+18707501275",
@@ -81,6 +101,7 @@ export const services = [
     detail:
       "Using clinical and Ericksonian techniques to work with — not against — your inner world, opening space for lasting, self-directed change.",
     featured: true,
+    image: { base: "/images/service-hypnotherapy", alt: "Calm beach at sunset with smooth stones in the water" },
   },
   {
     name: "Neurolinguistic Programming (NLP)",
@@ -89,6 +110,7 @@ export const services = [
     detail:
       "Reframe the patterns and language running quietly in the background so your daily life reflects who you actually are.",
     featured: false,
+    image: { base: "/images/service-nlp", alt: "Gentle ripples on still water" },
   },
   {
     name: "Sound Frequency Healing",
@@ -97,6 +119,11 @@ export const services = [
     detail:
       "Vibration and tone guide the nervous system toward stillness, making room for restoration that words alone can't reach.",
     featured: false,
+    image: {
+      base: "/images/service-sound",
+      alt: "Lotus flower resting on lily pads",
+      png: true,
+    },
   },
   {
     name: "Somatic Movement & Breathwork",
@@ -105,6 +132,14 @@ export const services = [
     detail:
       "Breath and movement help discharge held tension and return you to a felt sense of safety and presence.",
     featured: false,
+    image: {
+      base: "/images/service-somatic",
+      alt: "Green leaf with visible veins, close up",
+    },
+    imageSecondary: {
+      base: "/images/service-somatic-alt",
+      alt: "Stacked stones in a misty landscape",
+    },
   },
   {
     name: "Holistic Nutrition & Wellness",
@@ -113,10 +148,15 @@ export const services = [
     detail:
       "Practical, compassionate nourishment that honors the body as the foundation for everything else you're building.",
     featured: false,
+    image: {
+      base: "/images/service-nutrition",
+      alt: "Fresh, nourishing whole foods",
+    },
   },
 ] as const;
 
 export const about = {
+  image: images.aboutAshley,
   heading: "A fellow traveler on the path to self-discovery",
   quote:
     "I know what it feels like to navigate the world through the lens of your titles — to be the dedicated parent, the supportive spouse, and the reliable professional, while wondering if there is still space for the 'you' beneath it all.",

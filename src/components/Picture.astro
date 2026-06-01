@@ -1,0 +1,25 @@
+---
+interface Props {
+  /** Base path without extension, e.g. /images/hero */
+  base: string;
+  alt: string;
+  class?: string;
+  loading?: "lazy" | "eager";
+  /** Use PNG fallback instead of JPG (e.g. lotus with transparency) */
+  png?: boolean;
+}
+
+const { base, alt, class: className = "", loading = "lazy", png = false } = Astro.props;
+const fallback = png ? `${base}.png` : `${base}.jpg`;
+---
+
+<picture>
+  <source srcset={`${base}.webp`} type="image/webp" />
+  <img
+    src={fallback}
+    alt={alt}
+    loading={loading}
+    decoding="async"
+    class={className}
+  />
+</picture>

@@ -1,6 +1,7 @@
 ---
-import { site, about, contact } from "../data/site";
+import { about, contact } from "../data/site";
 import Button from "./Button.astro";
+import Picture from "./Picture.astro";
 ---
 
 <section
@@ -11,24 +12,21 @@ import Button from "./Button.astro";
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="grid items-start gap-14 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-5">
-        <div
-          class="reveal relative mx-auto aspect-[4/5] max-w-sm overflow-hidden rounded-2xl border border-sand bg-gradient-to-br from-linen via-cream to-sage/20 shadow-lift lg:mx-0"
+        <figure
+          class="reveal relative mx-auto max-w-sm overflow-hidden rounded-2xl border border-sand bg-cream shadow-lift lg:mx-0"
         >
-          <div
-            class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center"
+          <Picture
+            base={about.image.base}
+            alt={about.image.alt}
+            class="aspect-[4/5] w-full object-cover object-[center_20%]"
+            loading="eager"
+          />
+          <figcaption
+            class="border-t border-sand/80 bg-cream/95 px-6 py-4 text-center font-display text-lg italic text-clay-deep"
           >
-            <div
-              class="flex h-24 w-24 items-center justify-center rounded-full border-2 border-gold/40 bg-cream/80"
-              aria-hidden="true"
-            >
-              <span class="font-display text-4xl text-sage-deep">AR</span>
-            </div>
-            <p class="mt-6 text-sm font-medium text-muted">Headshot coming soon</p>
-            <p class="mt-2 font-display text-lg italic text-clay-deep">
-              {about.closing}
-            </p>
-          </div>
-        </div>
+            {about.closing}
+          </figcaption>
+        </figure>
       </div>
 
       <div class="lg:col-span-7">

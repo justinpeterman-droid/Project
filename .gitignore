@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 # netlify
 .netlify/
+
+# Canva originals (large); optimized assets live in public/images/*.webp|jpg|png
+public/images/canva-raw/

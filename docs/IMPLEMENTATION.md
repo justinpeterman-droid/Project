@@ -54,11 +54,11 @@ netlify.toml            # Build + headers (no DNS instructions)
 | Spec section / anchor | Component file | Notes |
 |----------------------|----------------|-------|
 | Header / nav | `Header.astro` | Sticky; mobile menu; discovery CTA |
-| Hero | `Hero.astro` | Primary + secondary CTA |
-| Philosophy `#philosophy` | `Philosophy.astro` | 3-card grid |
-| Services bento `#services` | `Services.astro` | Featured hypnotherapy card spans 2 rows on lg |
-| Mirror moment | `Mirror.astro` | Dark forest band |
-| About `#about` | `About.astro` | Headshot placeholder (swap image later) |
+| Hero | `Hero.astro` | Full-bleed photo from Canva + cream overlay; primary + secondary CTA |
+| Philosophy `#philosophy` | `Philosophy.astro` | Polaroid forest image + 3-card grid |
+| Services bento `#services` | `Services.astro` | Per-modality photos; somatic uses dual image strip |
+| Mirror moment | `Mirror.astro` | Waterfall background + forest overlay |
+| About `#about` | `About.astro` | Ashley headshot from Canva (`about.image`) |
 | Resources `#resources` | `Resources.astro` | Jotform + Drive links |
 | Booking `#book` | `Booking.astro` | Discovery + 1:1; compliance block |
 | FAQ | `FAQ.astro` | Native `<details>` (no JS) |
@@ -97,12 +97,26 @@ Optional: set `PUBLIC_BOOKING_URL` in Netlify env and read it in `site.ts` if yo
 
 ---
 
-## Adding a headshot
+## Images (from Canva site)
 
-Replace the placeholder in `About.astro`:
+Photos were downloaded from the legacy Canva site, optimized with Sharp, and wired through `src/data/site.ts` and `Picture.astro`.
 
-1. Add image to `public/images/ashley-romero.jpg` (WebP recommended).
-2. Replace the inner placeholder `div` with `<img src="/images/ashley-romero.jpg" alt="Ashley Romero, CMH, CAHA" class="h-full w-full object-cover" loading="lazy" />`.
+| Asset | Path (base) | Used in |
+|-------|-------------|---------|
+| Hero sunset | `/images/hero` | `Hero.astro` background |
+| Forest | `/images/philosophy-forest` | `Philosophy.astro` |
+| Waterfall | `/images/mirror-waterfall` | `Mirror.astro` background |
+| Ashley | `/images/about-ashley` | `About.astro` |
+| Services | `/images/service-*` | `Services.astro` cards |
+
+**Refresh pipeline**
+
+1. Drop new originals in `public/images/canva-raw/` (gitignored).
+2. Edit mappings in `scripts/optimize-images.mjs` if filenames change.
+3. Run `node scripts/optimize-images.mjs`.
+4. Update `images` / `services[].image` in `site.ts` if bases change.
+
+`canva-raw/` is not committed; optimized `.webp` + `.jpg` (or `.png` for lotus) are in `public/images/`.
 
 ---
 

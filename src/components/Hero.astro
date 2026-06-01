@@ -1,19 +1,31 @@
 ---
-import { site, booking } from "../data/site";
+import { site, booking, images } from "../data/site";
 import Button from "./Button.astro";
+import Picture from "./Picture.astro";
 ---
 
 <section
   class="relative min-h-[92vh] overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-32"
   aria-labelledby="hero-heading"
 >
-  <div class="pointer-events-none absolute inset-0 glow-warm" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <Picture
+      base={images.hero.base}
+      alt=""
+      loading="eager"
+      class="h-full w-full object-cover object-[center_35%]"
+    />
+  </div>
   <div
-    class="pointer-events-none absolute -right-24 top-20 h-96 w-96 rounded-full bg-sage/15 blur-3xl"
+    class="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas/94 via-canvas/82 to-canvas/96"
     aria-hidden="true"
   ></div>
   <div
-    class="pointer-events-none absolute -left-16 bottom-0 h-80 w-80 rounded-full bg-gold/10 blur-3xl"
+    class="pointer-events-none absolute inset-0 glow-warm opacity-60 mix-blend-soft-light"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -right-24 top-20 h-96 w-96 rounded-full bg-sage/10 blur-3xl"
     aria-hidden="true"
   ></div>
 

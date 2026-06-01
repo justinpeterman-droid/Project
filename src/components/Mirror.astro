@@ -1,11 +1,23 @@
 ---
-import { mirror, booking } from "../data/site";
+import { mirror, booking, images } from "../data/site";
 import Button from "./Button.astro";
+import Picture from "./Picture.astro";
 ---
 
-<section class="relative overflow-hidden bg-forest py-24 text-cream sm:py-32">
+<section class="relative overflow-hidden py-24 text-cream sm:py-32">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <Picture
+      base={images.mirrorWaterfall.base}
+      alt=""
+      class="h-full w-full object-cover object-center"
+    />
+  </div>
   <div
-    class="pointer-events-none absolute inset-0 opacity-30"
+    class="pointer-events-none absolute inset-0 bg-forest/88"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute inset-0 opacity-40"
     style="background: radial-gradient(ellipse 80% 60% at 50% 100%, #8c9a86 0%, transparent 70%);"
     aria-hidden="true"
   ></div>
