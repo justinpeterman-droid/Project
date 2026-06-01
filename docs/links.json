@@ -1,0 +1,62 @@
+{
+  "brand": {
+    "name": "Hometown Serenity",
+    "practitioner": "Ashley Romero, CMH, CAHA",
+    "domain": "https://hometownserenity.com",
+    "hosting": "netlify"
+  },
+  "contact": {
+    "phone": "870-750-1275",
+    "phoneTel": "tel:+18707501275",
+    "email": "ashleyromero@hometownserenity.com",
+    "emailMailto": "mailto:ashleyromero@hometownserenity.com"
+  },
+  "booking": {
+    "discoveryCall": {
+      "label": "Book a discovery call",
+      "url": "https://calendar.app.google/cRjyQ2t3FXPMPLSC7"
+    },
+    "oneOnOneSession": {
+      "label": "Book a 1:1 session",
+      "url": "https://calendar.app.google/cRjyQ2t3FXPMPLSC7"
+    }
+  },
+  "social": {
+    "facebook": {
+      "label": "Ashley Romero CMH",
+      "url": "https://www.facebook.com/profile.php?id=61583873646491"
+    },
+    "instagram": {
+      "handle": "@Hometownserenity",
+      "url": "https://www.instagram.com/hometownserenity?utm_source=qr"
+    },
+    "indeed": {
+      "url": "https://profile.indeed.com/p/ashleyr-y56g66d"
+    },
+    "youtube": {
+      "label": "Inked Integration",
+      "url": "https://youtube.com/@inkedintegration?si=meYxxvDtqhihBYh3"
+    },
+    "substack": {
+      "label": "Inked Integration",
+      "url": "https://inkedintegration.substack.com/?utm_id=97757_v0_s00_e233_tv2_tp1_a1dennhaw19nio"
+    }
+  },
+  "resources": {
+    "handwritingSample": {
+      "label": "Handwriting Sample Submission",
+      "url": "https://form.jotform.com/261354618025050"
+    },
+    "serenitySanctuaryApp": {
+      "label": "Serenity Sanctuary App",
+      "url": "https://www.jotform.com/app/261251095682155"
+    },
+    "dreamJournal": {
+      "label": "Dream Journal",
+      "url": "https://drive.google.com/file/d/1ioXAcCwEHSMNmDIrIL15oXs-9syZVdUf/view?usp=drivesdk"
+    }
+  },
+  "legacy": {
+    "canvaSite": "https://hometownserenity.my.canva.site/ashmarie423"
+  }
+}
