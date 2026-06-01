@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import { site } from "../data/site";
 
@@ -98,6 +99,8 @@ const jsonLd = {
       type="application/ld+json"
       set:html={JSON.stringify(jsonLd)}
     />
+
+    <ClientRouter fallback="animate" />
   </head>
   <body>
     <a
@@ -107,29 +110,34 @@ const jsonLd = {
     >
     <slot />
 
-    <!-- Scroll reveal: progressive enhancement, respects reduced motion -->
+    <!-- Scroll reveal: runs on first load and after view transitions -->
     <script is:inline>
       (() => {
-        const els = document.querySelectorAll(".reveal");
-        if (
-          !("IntersectionObserver" in window) ||
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ) {
-          els.forEach((el) => el.classList.add("is-visible"));
-          return;
-        }
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                io.unobserve(entry.target);
-              }
-            });
-          },
-          { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
-        );
-        els.forEach((el) => io.observe(el));
+        const initReveal = () => {
+          const els = document.querySelectorAll(".reveal:not(.is-visible)");
+          if (
+            !("IntersectionObserver" in window) ||
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ) {
+            els.forEach((el) => el.classList.add("is-visible"));
+            return;
+          }
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
+          );
+          els.forEach((el) => io.observe(el));
+        };
+
+        initReveal();
+        document.addEventListener("astro:page-load", initReveal);
       })();
     </script>
   </body>

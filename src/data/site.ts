@@ -67,11 +67,11 @@ export const booking = {
 } as const;
 
 export const nav = [
-  { label: "Philosophy", href: "#philosophy" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Resources", href: "#resources" },
-  { label: "Connect", href: "#connect" },
+  { label: "Philosophy", href: "/#philosophy" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#about" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Connect", href: "/#connect" },
 ] as const;
 
 export const philosophy = [

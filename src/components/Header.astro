@@ -4,6 +4,8 @@ import Button from "./Button.astro";
 ---
 
 <header
+  transition:persist
+  transition:name="site-header"
   class="fixed inset-x-0 top-0 z-50 border-b border-sand/60 bg-canvas/85 backdrop-blur-md"
 >
   <div
@@ -27,7 +29,7 @@ import Button from "./Button.astro";
         nav.map((item) => (
           <a
             href={item.href}
-            class="text-sm font-medium text-muted transition hover:text-ink"
+            class="nav-link text-sm font-medium text-muted transition hover:text-ink"
           >
             {item.label}
           </a>
