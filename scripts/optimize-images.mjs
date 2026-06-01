@@ -7,12 +7,7 @@ const out = "public/images";
 
 /** Source hash → optimized output name */
 const map = {
-  "1cebf1349f5658db2362c5595aaf6a0f.jpg": { name: "hero", width: 2400, quality: 82 },
-  "106fa1806bda9c7102468421cd7413ff.jpg": {
-    name: "philosophy-forest",
-    width: 1600,
-    quality: 82,
-  },
+  "106fa1806bda9c7102468421cd7413ff.jpg": { name: "hero", width: 2400, quality: 82 },
   "0be0ebe2d3ecbb5bf54c709204828698.jpg": {
     name: "mirror-waterfall",
     width: 2000,

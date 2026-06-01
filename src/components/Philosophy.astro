@@ -1,6 +1,5 @@
 ---
-import { philosophy, images } from "../data/site";
-import Picture from "./Picture.astro";
+import { philosophy } from "../data/site";
 ---
 
 <section
@@ -18,16 +17,6 @@ import Picture from "./Picture.astro";
         A gentler way back to yourself
       </h2>
     </div>
-
-    <figure
-      class="reveal reveal-delay-2 mx-auto mt-14 max-w-md rotate-[-1.5deg] overflow-hidden rounded-2xl border border-sand bg-cream p-3 shadow-lift sm:max-w-lg"
-    >
-      <Picture
-        base={images.philosophyForest.base}
-        alt={images.philosophyForest.alt}
-        class="aspect-[4/3] w-full rounded-xl object-cover"
-      />
-    </figure>
 
     <div class="mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
       {

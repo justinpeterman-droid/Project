@@ -156,7 +156,7 @@ Use this checklist before merging the site implementation and before DNS cutover
 - [ ] Single-page anchors scroll correctly with sticky header offset
 - [ ] Mobile menu opens/closes; sticky bottom CTA visible on small screens
 - [ ] Services bento readable on mobile and desktop
-- [ ] Headshot placeholder present (or real image if provided)
+- [ ] Hero, philosophy, mirror, about, and service photos load (WebP with JPG/PNG fallback)
 - [ ] No testimonial section until content exists
 
 ### Compliance & legal

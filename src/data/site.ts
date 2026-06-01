@@ -25,11 +25,7 @@ export const site = {
 export const images = {
   hero: {
     base: "/images/hero",
-    alt: "Sunset landscape with trees — calm horizon at dusk",
-  },
-  philosophyForest: {
-    base: "/images/philosophy-forest",
-    alt: "Sunlight through forest trees",
+    alt: "Sunset over rolling hills with silhouetted trees at dusk",
   },
   mirrorWaterfall: {
     base: "/images/mirror-waterfall",
