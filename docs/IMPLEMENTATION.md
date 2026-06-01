@@ -55,7 +55,7 @@ netlify.toml            # Build + headers (no DNS instructions)
 |----------------------|----------------|-------|
 | Header / nav | `Header.astro` | Sticky; mobile menu; discovery CTA |
 | Hero | `Hero.astro` | Full-bleed photo from Canva + cream overlay; primary + secondary CTA |
-| Philosophy `#philosophy` | `Philosophy.astro` | Polaroid forest image + 3-card grid |
+| Philosophy `#philosophy` | `Philosophy.astro` | 3-card grid (no separate photo) |
 | Services bento `#services` | `Services.astro` | Per-modality photos; somatic uses dual image strip |
 | Mirror moment | `Mirror.astro` | Waterfall background + forest overlay |
 | About `#about` | `About.astro` | Ashley headshot from Canva (`about.image`) |
@@ -103,8 +103,7 @@ Photos were downloaded from the legacy Canva site, optimized with Sharp, and wir
 
 | Asset | Path (base) | Used in |
 |-------|-------------|---------|
-| Hero sunset | `/images/hero` | `Hero.astro` background |
-| Forest | `/images/philosophy-forest` | `Philosophy.astro` |
+| Hero sunset | `/images/hero` | `Hero.astro` full-bleed background (from Canva main page) |
 | Waterfall | `/images/mirror-waterfall` | `Mirror.astro` background |
 | Ashley | `/images/about-ashley` | `About.astro` |
 | Services | `/images/service-*` | `Services.astro` cards |

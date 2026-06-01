@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { mkdir, copyFile } from "node:fs/promises";
+import { mkdir } from "node:fs/promises";
 import path from "node:path";
 
 const raw = "public/images/canva-raw";
@@ -18,11 +18,6 @@ const map = {
     width: 1066,
     quality: 88,
   },
-  "f7dfb4b95c2a2a07829bfa89124c4101.jpg": {
-    name: "service-somatic-alt",
-    width: 1200,
-    quality: 82,
-  },
   "4acca0f39162aa4f504896d4603935e0.jpg": {
     name: "service-hypnotherapy",
     width: 1200,
@@ -39,15 +34,19 @@ const map = {
     quality: 85,
     png: true,
   },
-  "36bb3c3190f4708d9345b36a01cbe596.jpg": {
+  /** Sunlit forest path — somatic movement & breathwork */
+  "f0b45c0b9a80f12766d4cc76a15a6519.jpg": {
     name: "service-somatic",
-    width: 1200,
+    width: 1600,
     quality: 82,
+    allowUpscale: true,
   },
-  "367e2e0b7a53966a8228937248d588f1.jpg": {
+  /** Lone tree on a green hill — holistic nutrition & wellness */
+  "a83f376a42e347d4317bc3f3e7060254.jpg": {
     name: "service-nutrition",
-    width: 1200,
+    width: 1600,
     quality: 82,
+    allowUpscale: true,
   },
 };
 
@@ -55,13 +54,12 @@ await mkdir(out, { recursive: true });
 
 for (const [srcName, opts] of Object.entries(map)) {
   const input = path.join(raw, srcName);
-  const ext = opts.png ? "webp" : "webp";
   const outputWebp = path.join(out, `${opts.name}.webp`);
   const outputJpg = path.join(out, `${opts.name}.jpg`);
 
   const pipeline = sharp(input).resize({
     width: opts.width,
-    withoutEnlargement: true,
+    withoutEnlargement: !opts.allowUpscale,
   });
 
   await pipeline.clone().webp({ quality: opts.quality }).toFile(outputWebp);

@@ -130,11 +130,7 @@ export const services = [
     featured: false,
     image: {
       base: "/images/service-somatic",
-      alt: "Green leaf with visible veins, close up",
-    },
-    imageSecondary: {
-      base: "/images/service-somatic-alt",
-      alt: "Stacked stones in a misty landscape",
+      alt: "Sunlit forest path with golden light filtering through the trees",
     },
   },
   {
@@ -146,7 +142,7 @@ export const services = [
     featured: false,
     image: {
       base: "/images/service-nutrition",
-      alt: "Fresh, nourishing whole foods",
+      alt: "A lone tree on a rolling green hill beneath a clear blue sky",
     },
   },
 ] as const;
