@@ -1,0 +1,55 @@
+---
+import { howItWorks, booking } from "../data/site";
+import Button from "./Button.astro";
+---
+
+<section
+  class="scroll-mt-24 bg-canvas py-24 sm:py-32"
+  aria-labelledby="how-heading"
+>
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="reveal eyebrow">Your path</p>
+      <h2
+        id="how-heading"
+        class="reveal reveal-delay-1 mt-4 font-display text-3xl text-balance text-ink sm:text-4xl md:text-5xl"
+      >
+        How we work together
+      </h2>
+      <p class="reveal reveal-delay-2 prose-width mx-auto mt-6 text-pretty text-lg text-muted">
+        A clear rhythm from first conversation to ongoing integration — at your
+        pace.
+      </p>
+    </div>
+
+    <ol class="mt-14 grid gap-8 md:grid-cols-3 md:gap-6">
+      {
+        howItWorks.map((step, i) => (
+          <li
+            class:list={[
+              "reveal relative rounded-2xl border border-sand/80 bg-linen p-8 shadow-soft",
+              `reveal-delay-${i + 1}`,
+            ]}
+          >
+            <span
+              class="font-display text-4xl leading-none text-clay/40"
+              aria-hidden="true"
+            >
+              {step.step}
+            </span>
+            <h3 class="mt-4 font-display text-xl text-ink">{step.title}</h3>
+            <p class="prose-width mt-4 text-pretty text-sm leading-relaxed text-muted">
+              {step.body}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="reveal reveal-delay-4 mt-12 text-center">
+      <Button href={booking.url} variant="primary" size="lg" external>
+        {booking.discovery.label}
+      </Button>
+    </div>
+  </div>
+</section>

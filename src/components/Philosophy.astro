@@ -4,7 +4,7 @@ import { philosophy } from "../data/site";
 
 <section
   id="philosophy"
-  class="scroll-mt-24 bg-linen py-24 sm:py-32"
+  class="scroll-mt-24 bg-canvas py-24 sm:py-32"
   aria-labelledby="philosophy-heading"
 >
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
@@ -36,9 +36,15 @@ import { philosophy } from "../data/site";
             <h3 class="mt-6 font-display text-xl leading-snug text-ink">
               {item.title}
             </h3>
-            <p class="mt-4 text-pretty text-sm leading-relaxed text-muted">
-              {item.body}
-            </p>
+            {i === 1 ? (
+              <p class="pull-quote mt-4 text-pretty text-base leading-relaxed">
+                {item.body}
+              </p>
+            ) : (
+              <p class="prose-width mt-4 text-pretty text-sm leading-relaxed text-muted">
+                {item.body}
+              </p>
+            )}
           </article>
         ))
       }

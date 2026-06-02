@@ -48,6 +48,27 @@ const map = {
     quality: 82,
     allowUpscale: true,
   },
+  /** ISSA certification seal */
+  "5de6130185e050730965c8e7974990f0.png": {
+    name: "badge-issa",
+    width: 400,
+    quality: 90,
+    png: true,
+  },
+  /** CAHA / hypno-anesthesia seal */
+  "d68b258f0e7be36d68541c2ca1cd2d74.png": {
+    name: "badge-caha",
+    width: 400,
+    quality: 90,
+    png: true,
+  },
+  /** CMH-style credential badge */
+  "6809cd6be95aaa220a161aaa2caa6684.png": {
+    name: "badge-cmh",
+    width: 400,
+    quality: 90,
+    png: true,
+  },
 };
 
 await mkdir(out, { recursive: true });

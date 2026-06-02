@@ -6,7 +6,7 @@ import Picture from "./Picture.astro";
 
 <section
   id="services"
-  class="scroll-mt-24 py-24 sm:py-32"
+  class="scroll-mt-24 bg-linen py-24 sm:py-32"
   aria-labelledby="services-heading"
 >
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
@@ -36,7 +36,9 @@ import Picture from "./Picture.astro";
         services.map((service, i) => (
           <article
             class:list={[
-              "reveal group flex flex-col justify-between overflow-hidden rounded-2xl border border-sand/70 bg-cream shadow-soft transition hover:border-sage/40 hover:shadow-lift",
+              "reveal group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-sand/70 bg-cream shadow-soft transition hover:border-sage/40 hover:shadow-lift",
+              service.featured &&
+                "ring-1 ring-gold/30 before:pointer-events-none before:absolute before:right-0 before:top-0 before:z-10 before:h-16 before:w-16 before:bg-gradient-to-bl before:from-gold/25 before:to-transparent",
               service.featured
                 ? "sm:col-span-2 lg:col-span-3 lg:row-span-2"
                 : "lg:col-span-3",
@@ -67,7 +69,7 @@ import Picture from "./Picture.astro";
                   base={service.image.base}
                   alt={service.image.alt}
                   png={"png" in service.image && service.image.png}
-                  class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                  class="h-full w-full object-cover saturate-[1.02] transition duration-500 group-hover:scale-[1.02]"
                 />
               )}
             </div>

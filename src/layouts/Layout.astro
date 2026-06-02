@@ -1,7 +1,8 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
-import { site } from "../data/site";
+import { site, images } from "../data/site";
+import { buildFaqJsonLd, buildPageJsonLd } from "../lib/structured-data";
 
 interface Props {
   title?: string;
@@ -9,53 +10,35 @@ interface Props {
   /** Path for canonical/OG, e.g. "/" */
   path?: string;
   image?: string;
+  imageAlt?: string;
+  /** Preload hero for LCP on home */
+  preloadHero?: boolean;
+  /** Include FAQPage schema (home only) */
+  includeFaqSchema?: boolean;
 }
 
 const {
   title,
-  description = site.description,
+  description,
   path = "/",
-  image = "/og-image.svg",
+  image = site.seo.ogImage,
+  imageAlt = site.seo.ogImageAlt,
+  preloadHero = false,
+  includeFaqSchema = false,
 } = Astro.props;
 
+const isHome = path === "/";
 const pageTitle = title
   ? `${title} · ${site.name}`
-  : `${site.name} · Ashley Romero, ${site.credentials}`;
+  : site.seo.title;
+const metaDescription = description ?? (isHome ? site.seo.description : site.description);
 
 const canonical = new URL(path, site.url).toString();
 const ogImage = new URL(image, site.url).toString();
+const ogWidth = 1200;
+const ogHeight = 630;
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["HealthAndBeautyBusiness", "LocalBusiness"],
-      "@id": `${site.url}/#business`,
-      name: site.name,
-      description: site.description,
-      url: site.url,
-      telephone: "+18707501275",
-      email: "ashleyromero@hometownserenity.com",
-      areaServed: site.location,
-      founder: { "@id": `${site.url}/#person` },
-      sameAs: [
-        "https://www.instagram.com/hometownserenity",
-        "https://www.facebook.com/profile.php?id=61583873646491",
-        "https://youtube.com/@inkedintegration",
-        "https://inkedintegration.substack.com/",
-      ],
-    },
-    {
-      "@type": "Person",
-      "@id": `${site.url}/#person`,
-      name: "Ashley Romero",
-      honorificSuffix: site.credentials,
-      jobTitle: "Clinical Hypnotherapist & Behavioral Coach",
-      worksFor: { "@id": `${site.url}/#business` },
-      url: site.url,
-    },
-  ],
-};
+const jsonLd = buildPageJsonLd();
 ---
 
 <!doctype html>
@@ -65,26 +48,41 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
 
     <title>{pageTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
     <meta name="theme-color" content="#fbf8f3" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content={String(ogWidth)} />
+    <meta property="og:image:height" content={String(ogHeight)} />
+    <meta property="og:image:alt" content={imageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    {
+      preloadHero && (
+        <link
+          rel="preload"
+          as="image"
+          href={`${images.hero.base}.webp`}
+          type="image/webp"
+        />
+      )
+    }
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -94,11 +92,15 @@ const jsonLd = {
       rel="stylesheet"
     />
 
-    <!-- Structured data -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify(jsonLd)}
     />
+    {
+      includeFaqSchema && (
+        <script type="application/ld+json" set:html={JSON.stringify(buildFaqJsonLd())} />
+      )
+    }
 
     <ClientRouter fallback="animate" />
   </head>
@@ -110,7 +112,6 @@ const jsonLd = {
     >
     <slot />
 
-    <!-- Scroll reveal: runs on first load and after view transitions -->
     <script is:inline>
       (() => {
         const initReveal = () => {

@@ -19,7 +19,58 @@ export const site = {
   url: "https://hometownserenity.com",
   legacyCanva: "https://hometownserenity.my.canva.site/ashmarie423",
   location: "Arkansas, United States",
+  seo: {
+    title: "Hypnotherapy & Coaching in Arkansas | Hometown Serenity",
+    description:
+      "Clinical hypnotherapy and behavioral coaching with Ashley Romero, CMH, CAHA in Arkansas. Identity reconstruction through NLP, sound healing, somatic work, and holistic nutrition.",
+    ogImage: "/og-image.jpg",
+    ogImageAlt:
+      "Hometown Serenity — clinical hypnotherapy and behavioral coaching in Arkansas",
+  },
 } as const;
+
+export const trustStrip = [
+  { label: "CMH & CAHA certified" },
+  { label: "Based in Arkansas" },
+  { label: "Discovery call · No pressure" },
+] as const;
+
+export const howItWorks = [
+  {
+    step: "01",
+    title: "Book a discovery call",
+    body: "A relaxed conversation to explore where you are and whether this integrative path feels right — no commitment required.",
+  },
+  {
+    step: "02",
+    title: "Begin your 1:1 sessions",
+    body: "Hypnotherapy, somatic work, sound, NLP, or nutrition — woven together around what you actually need.",
+  },
+  {
+    step: "03",
+    title: "Integrate between sessions",
+    body: "Journals, the Serenity Sanctuary app, and resources support your rhythm at your own pace.",
+  },
+] as const;
+
+/** Certification badge images (from Canva site assets). */
+export const credentialBadges = [
+  {
+    name: "Certified Master Hypnotherapist",
+    base: "/images/badge-cmh",
+    alt: "Certified Master Hypnotherapist credential",
+  },
+  {
+    name: "ISSA Certified",
+    base: "/images/badge-issa",
+    alt: "ISSA certification seal",
+  },
+  {
+    name: "Certified Advanced Hypno-Anesthesia",
+    base: "/images/badge-caha",
+    alt: "CAHA certification seal",
+  },
+] as const;
 
 /** Optimized images exported from the original Canva site (see scripts/optimize-images.mjs). */
 export const images = {

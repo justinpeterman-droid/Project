@@ -5,11 +5,19 @@ interface Props {
   alt: string;
   class?: string;
   loading?: "lazy" | "eager";
+  fetchpriority?: "high" | "low" | "auto";
   /** Use PNG fallback instead of JPG (e.g. lotus with transparency) */
   png?: boolean;
 }
 
-const { base, alt, class: className = "", loading = "lazy", png = false } = Astro.props;
+const {
+  base,
+  alt,
+  class: className = "",
+  loading = "lazy",
+  fetchpriority,
+  png = false,
+} = Astro.props;
 const fallback = png ? `${base}.png` : `${base}.jpg`;
 ---
 
@@ -19,6 +27,7 @@ const fallback = png ? `${base}.png` : `${base}.jpg`;
     src={fallback}
     alt={alt}
     loading={loading}
+    fetchpriority={fetchpriority}
     decoding="async"
     class={className}
   />

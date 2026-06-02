@@ -4,9 +4,17 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Compliance from "../components/Compliance.astro";
 import { site, contact, legal } from "../data/site";
+
+const privacyDescription =
+  "How Hometown Serenity collects, uses, and protects your information. Contact Ashley Romero for privacy questions.";
 ---
 
-<Layout title="Privacy" path="/privacy" description={`Privacy practices for ${site.name}.`}>
+<Layout
+  title="Privacy"
+  path="/privacy"
+  description={privacyDescription}
+  image={site.seo.ogImage}
+>
   <Header />
   <main
     id="main"
@@ -14,23 +22,59 @@ import { site, contact, legal } from "../data/site";
     class="mx-auto max-w-3xl px-5 pb-24 pt-32 sm:px-8"
   >
     <p class="eyebrow">Legal</p>
-    <h1 class="mt-4 font-display text-4xl text-ink">Privacy</h1>
-    <p class="mt-6 text-muted">
-      This page will be expanded with full privacy policy language before public
-      launch. For questions about your information, contact Ashley directly.
+    <h1 class="mt-4 font-display text-4xl text-ink">Privacy policy</h1>
+    <p class="prose-width mt-6 text-muted">
+      Hometown Serenity respects your privacy. This summary explains how we handle
+      information when you visit this website, book a session, or contact Ashley
+      Romero directly. A complete policy will be published before public launch.
     </p>
-    <ul class="mt-8 space-y-2 text-sm text-loam">
-      <li>
-        Email: <a href={contact.emailHref} class="text-clay-deep underline"
-          >{contact.email}</a
-        >
-      </li>
-      <li>
-        Phone: <a href={contact.phoneHref} class="text-clay-deep underline"
-          >{contact.phone}</a
-        >
-      </li>
-    </ul>
+
+    <section class="mt-10 space-y-8">
+      <div>
+        <h2 class="font-display text-xl text-ink">Information we may collect</h2>
+        <p class="prose-width mt-3 text-sm leading-relaxed text-muted">
+          When you book through our scheduling link, submit a form, or email us, you
+          may provide your name, contact details, and information you choose to share
+          about your goals. Technical data such as browser type may be collected by
+          our hosting provider for security and performance.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-display text-xl text-ink">How we use it</h2>
+        <p class="prose-width mt-3 text-sm leading-relaxed text-muted">
+          Information is used to respond to inquiries, schedule sessions, provide
+          resources you request, and improve this website. We do not sell your
+          personal information.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-display text-xl text-ink">Third-party services</h2>
+        <p class="prose-width mt-3 text-sm leading-relaxed text-muted">
+          Booking, forms, and resource links may be hosted by third parties (for
+          example Google Calendar, Jotform, or Google Drive). Their privacy policies
+          apply when you use those services.
+        </p>
+      </div>
+      <div>
+        <h2 class="font-display text-xl text-ink">Contact</h2>
+        <p class="prose-width mt-3 text-sm leading-relaxed text-muted">
+          Questions about this policy or your data:
+        </p>
+        <ul class="mt-4 space-y-2 text-sm text-loam">
+          <li>
+            Email: <a href={contact.emailHref} class="text-clay-deep underline"
+              >{contact.email}</a
+            >
+          </li>
+          <li>
+            Phone: <a href={contact.phoneHref} class="text-clay-deep underline"
+              >{contact.phone}</a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <div class="mt-12">
       <Compliance />
     </div>

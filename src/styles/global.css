@@ -240,6 +240,24 @@
   .reveal-delay-4 { transition-delay: 0.32s; }
   .reveal-delay-5 { transition-delay: 0.4s; }
 
+  .prose-width {
+    max-width: 65ch;
+  }
+
+  .pull-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-loam);
+    border-left: 2px solid color-mix(in srgb, var(--color-gold) 70%, transparent);
+    padding-left: 1.25rem;
+  }
+
+  #site-header.header-scrolled {
+    box-shadow: var(--shadow-soft);
+    border-color: color-mix(in srgb, var(--color-sand) 90%, transparent);
+    background: color-mix(in srgb, var(--color-canvas) 94%, transparent);
+  }
+
   /* Nav links — subtle underline on hover */
   .nav-link {
     position: relative;

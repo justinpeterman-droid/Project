@@ -1,0 +1,24 @@
+---
+import { trustStrip } from "../data/site";
+---
+
+<section
+  class="border-y border-sand/70 bg-cream/90 backdrop-blur-sm"
+  aria-label="Credentials and reassurance"
+>
+  <ul
+    class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-4 px-5 py-5 sm:gap-x-10 sm:px-8"
+  >
+    {
+      trustStrip.map((item) => (
+        <li class="flex items-center gap-2 border-sand/80 text-sm font-semibold tracking-wide text-loam first:border-0 sm:border-l sm:pl-10 sm:first:pl-0">
+          <span
+            class="inline-flex h-2 w-2 shrink-0 rounded-full bg-clay/80"
+            aria-hidden="true"
+          />
+          {item.label}
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -2,8 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import TrustStrip from "../components/TrustStrip.astro";
 import Philosophy from "../components/Philosophy.astro";
+import HowItWorks from "../components/HowItWorks.astro";
 import Services from "../components/Services.astro";
+import Testimonials from "../components/Testimonials.astro";
 import Mirror from "../components/Mirror.astro";
 import About from "../components/About.astro";
 import Resources from "../components/Resources.astro";
@@ -14,15 +17,18 @@ import Footer from "../components/Footer.astro";
 import MobileCTA from "../components/MobileCTA.astro";
 ---
 
-<Layout path="/">
+<Layout path="/" preloadHero includeFaqSchema>
   <Header />
   <main id="main" transition:name="page-content">
     <Hero />
+    <TrustStrip />
     <Philosophy />
+    <HowItWorks />
     <Services />
     <Mirror />
     <About />
     <Resources />
+    <Testimonials />
     <Booking />
     <FAQ />
     <Connect />

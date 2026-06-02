@@ -4,11 +4,13 @@ import Button from "./Button.astro";
 ---
 
 <header
+  id="site-header"
   transition:persist
   transition:name="site-header"
-  class="fixed inset-x-0 top-0 z-50 border-b border-sand/60 bg-canvas/85 backdrop-blur-md"
+  class="fixed inset-x-0 top-0 z-50 border-b border-sand/60 bg-canvas/85 backdrop-blur-md transition-[box-shadow,padding] duration-300"
 >
   <div
+    id="header-inner"
     class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8"
   >
     <a href="/" class="group flex min-w-0 flex-col gap-0.5">
@@ -91,6 +93,20 @@ import Button from "./Button.astro";
 </header>
 
 <script>
+  const header = document.getElementById("site-header");
+  const headerInner = document.getElementById("header-inner");
+  if (header && headerInner) {
+    const onScroll = () => {
+      const scrolled = window.scrollY > 48;
+      header.classList.toggle("header-scrolled", scrolled);
+      headerInner.classList.toggle("py-3", scrolled);
+      headerInner.classList.toggle("py-4", !scrolled);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("astro:page-load", onScroll);
+  }
+
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("mobile-menu");
   if (toggle && menu) {

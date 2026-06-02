@@ -1,10 +1,25 @@
 ---
-import { site, contact, nav, social, legal } from "../data/site";
+import { site, contact, nav, social, legal, booking } from "../data/site";
 import Compliance from "./Compliance.astro";
+import Button from "./Button.astro";
 ---
 
 <footer transition:persist transition:name="site-footer" class="border-t border-sand bg-linen">
   <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+    <div
+      class="mb-14 flex flex-col items-start justify-between gap-6 rounded-2xl border border-sand/80 bg-cream p-8 shadow-soft sm:flex-row sm:items-center"
+    >
+      <div>
+        <p class="font-display text-2xl text-ink">Begin your journey home</p>
+        <p class="mt-2 max-w-md text-sm text-muted">
+          Book a discovery call — relaxed, no pressure, and tailored to your rhythm.
+        </p>
+      </div>
+      <Button href={booking.url} variant="primary" size="lg" external>
+        {booking.discovery.label}
+      </Button>
+    </div>
+
     <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
       <div class="lg:col-span-2">
         <p class="font-display text-2xl text-ink">{site.name}</p>

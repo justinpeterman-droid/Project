@@ -152,11 +152,12 @@ Use this checklist before merging the site implementation and before DNS cutover
 
 ### UX & design
 
-- [ ] Single-page anchors scroll correctly with sticky header offset
-- [ ] Mobile menu opens/closes; sticky bottom CTA visible on small screens
-- [ ] Services bento readable on mobile and desktop
-- [ ] Hero, philosophy, mirror, about, and service photos load (WebP with JPG/PNG fallback)
-- [ ] No testimonial section until content exists
+- [x] Single-page anchors scroll correctly with sticky header offset (`/#section` nav)
+- [x] Mobile menu opens/closes; sticky bottom CTA visible on small screens
+- [x] Services bento readable on mobile and desktop
+- [x] Hero, philosophy, mirror, about, and service photos load (WebP with JPG/PNG fallback)
+- [x] View transitions (ClientRouter), trust strip, How it works, testimonials placeholder
+- [x] Header shrink-on-scroll; section background rhythm; credential badges in About
 
 ### Compliance & legal
 
@@ -167,8 +168,9 @@ Use this checklist before merging the site implementation and before DNS cutover
 
 - [ ] `npm run build` succeeds with zero errors
 - [ ] Lighthouse mobile Performance ≥ 90 (target)
-- [ ] Sitemap generated at `/sitemap-index.xml`
-- [ ] OG image and favicon present
+- [x] Sitemap generated at `/sitemap-index.xml`
+- [x] Photo OG image (`public/og-image.jpg`, 1200×630) and favicon present
+- [x] SEO: dedicated title/description, FAQPage + Service schema, hero preload
 - [ ] **DNS for hometownserenity.com not changed** until explicit go-live
 
 ### Post-launch (when ready)
