@@ -28,11 +28,11 @@ const map = {
     width: 1200,
     quality: 82,
   },
-  "521ced48ce8397a30b746b929e090b77.png": {
+  /** Rain ripples on a still pond — sound frequency / vibration metaphor */
+  "1f2f6fc480514eb806c261ddff593d06.jpg": {
     name: "service-sound",
-    width: 1000,
-    quality: 85,
-    png: true,
+    width: 1600,
+    quality: 82,
   },
   /** Sunlit forest path — somatic movement & breathwork */
   "f0b45c0b9a80f12766d4cc76a15a6519.jpg": {

@@ -117,8 +117,7 @@ export const services = [
     featured: false,
     image: {
       base: "/images/service-sound",
-      alt: "Lotus flower resting on lily pads",
-      png: true,
+      alt: "Raindrops creating ripples across a still pond — a visual metaphor for sound and vibration",
     },
   },
   {
