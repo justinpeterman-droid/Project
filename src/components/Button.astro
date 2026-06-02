@@ -1,7 +1,7 @@
 ---
 interface Props {
   href: string;
-  variant?: "primary" | "secondary" | "ghost" | "light";
+  variant?: "primary" | "secondary" | "ghost" | "light" | "forest";
   size?: "md" | "lg";
   external?: boolean;
   class?: string;
@@ -25,12 +25,14 @@ const sizes = {
 
 const variants = {
   primary:
-    "bg-clay text-cream shadow-soft hover:bg-clay-deep focus-visible:outline-clay-deep",
+    "bg-clay text-cream shadow-lift hover:-translate-y-0.5 hover:bg-clay-deep hover:shadow-[0_4px_20px_rgba(189,123,83,0.35)] focus-visible:outline-clay-deep",
   secondary:
     "border border-sand bg-cream/80 text-ink backdrop-blur-sm hover:border-clay/40 hover:bg-cream",
   ghost: "text-clay-deep hover:bg-clay/10",
   light:
     "bg-cream text-forest hover:bg-linen focus-visible:outline-cream",
+  forest:
+    "bg-forest text-cream shadow-lift hover:-translate-y-0.5 hover:bg-forest-2 hover:shadow-[0_4px_20px_rgba(40,52,42,0.25)] focus-visible:outline-forest",
 };
 
 const rel = external ? "noopener noreferrer" : undefined;
