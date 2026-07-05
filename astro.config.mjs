@@ -14,6 +14,8 @@ export default defineConfig({
     defaultStrategy: "viewport",
   },
   vite: {
-    plugins: [tailwindcss()],
+    // Cast: @tailwindcss/vite and Astro bundle different Vite type versions,
+    // producing a harmless Plugin type mismatch. Runtime is unaffected.
+    plugins: [/** @type {any} */ (tailwindcss())],
   },
 });
