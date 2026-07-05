@@ -399,6 +399,38 @@
     to { transform: translate3d(0, 4%, 0) scale(1.06); }
   }
 
+  /* Sticky stacked cards — each pins and the next slides over it (md+) */
+  .card-stack {
+    position: relative;
+  }
+  .stack-card {
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .stack-card {
+      position: sticky;
+      top: calc(7rem + var(--index, 0) * 1.6rem);
+    }
+    /* Covered cards recede for depth as the next arrives (progressive) */
+    @supports (animation-timeline: view()) {
+      @media (prefers-reduced-motion: no-preference) {
+        .stack-card {
+          animation: stack-recede linear both;
+          animation-timeline: view();
+          animation-range: exit 0% exit 130%;
+          transform-origin: 50% 0;
+          will-change: transform;
+        }
+      }
+    }
+  }
+  @keyframes stack-recede {
+    to {
+      transform: scale(0.92) translateY(-0.75rem);
+      opacity: 0.55;
+    }
+  }
+
   /* Directional reveals — variants of .reveal that come in from a side */
   .reveal-left {
     opacity: 0;
