@@ -18,11 +18,22 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# Long-cache hashed assets
+# Long-cache hashed assets (fingerprinted by Astro/Vite)
 [[headers]]
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Images are stable content-wise; cache a month with a day of stale-while-revalidate.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/og-image.*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
 
 # When ready to retire the Canva site, point its links here and/or add a
 # redirect at the Canva side. Netlify only controls the custom domain.

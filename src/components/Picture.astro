@@ -1,4 +1,6 @@
 ---
+import manifest from "../data/image-manifest.json";
+
 interface Props {
   /** Base path without extension, e.g. /images/hero */
   base: string;
@@ -6,7 +8,9 @@ interface Props {
   class?: string;
   loading?: "lazy" | "eager";
   fetchpriority?: "high" | "low" | "auto";
-  /** Use PNG fallback instead of JPG (e.g. lotus with transparency) */
+  /** Responsive sizes hint (how wide the image renders across breakpoints) */
+  sizes?: string;
+  /** Force PNG fallback (badges with transparency). Inferred from manifest too. */
   png?: boolean;
 }
 
@@ -16,19 +20,55 @@ const {
   class: className = "",
   loading = "lazy",
   fetchpriority,
-  png = false,
+  sizes = "100vw",
+  png,
 } = Astro.props;
-const fallback = png ? `${base}.png` : `${base}.jpg`;
+
+const key = base.replace(/^\/images\//, "");
+const entry = (manifest as Record<string, any>)[key];
+
+const isPng = png ?? entry?.png ?? false;
+const fallbackExt = isPng ? "png" : "jpg";
+const fallbackSrc = `${base}.${fallbackExt}`;
+const width = entry?.w;
+const height = entry?.h;
+
+/** Build a srcset string for one format from the manifest widths. */
+const srcset = (ext: string) =>
+  entry?.widths?.map((w: number) => `${base}-${w}.${ext} ${w}w`).join(", ");
 ---
 
-<picture>
-  <source srcset={`${base}.webp`} type="image/webp" />
-  <img
-    src={fallback}
-    alt={alt}
-    loading={loading}
-    fetchpriority={fetchpriority}
-    decoding="async"
-    class={className}
-  />
-</picture>
+{
+  entry && !entry.png ? (
+    <picture>
+      <source type="image/avif" srcset={srcset("avif")} sizes={sizes} />
+      <source type="image/webp" srcset={srcset("webp")} sizes={sizes} />
+      <img
+        src={fallbackSrc}
+        srcset={srcset("jpg")}
+        sizes={sizes}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        fetchpriority={fetchpriority}
+        decoding="async"
+        class={className}
+      />
+    </picture>
+  ) : (
+    <picture>
+      <source srcset={`${base}.webp`} type="image/webp" />
+      <img
+        src={fallbackSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        fetchpriority={fetchpriority}
+        decoding="async"
+        class={className}
+      />
+    </picture>
+  )
+}

@@ -4,6 +4,8 @@ interface Props {
   variant?: "primary" | "secondary" | "ghost" | "light" | "forest";
   size?: "md" | "lg";
   external?: boolean;
+  /** Subtle cursor-follow "magnetic" effect (desktop, motion-OK only) */
+  magnetic?: boolean;
   class?: string;
 }
 
@@ -12,6 +14,7 @@ const {
   variant = "primary",
   size = "md",
   external = false,
+  magnetic = false,
   class: className = "",
 } = Astro.props;
 
@@ -41,9 +44,10 @@ const target = external ? "_blank" : undefined;
 
 <a
   href={href}
-  class:list={[base, sizes[size], variants[variant], className]}
+  class:list={[base, sizes[size], variants[variant], "will-change-transform", className]}
   rel={rel}
   target={target}
+  data-magnetic={magnetic ? "" : undefined}
 >
   <slot />
 </a>

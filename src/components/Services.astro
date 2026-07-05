@@ -51,27 +51,16 @@ import Picture from "./Picture.astro";
                 service.featured ? "aspect-[16/10] sm:aspect-[21/9]" : "aspect-[16/10]",
               ]}
             >
-              {"imageSecondary" in service && service.imageSecondary ? (
-                <div class="grid h-full grid-cols-2">
-                  <Picture
-                    base={service.image.base}
-                    alt={service.image.alt}
-                    class="h-full w-full object-cover"
-                  />
-                  <Picture
-                    base={service.imageSecondary.base}
-                    alt={service.imageSecondary.alt}
-                    class="h-full w-full object-cover"
-                  />
-                </div>
-              ) : (
-                <Picture
-                  base={service.image.base}
-                  alt={service.image.alt}
-                  png={"png" in service.image && service.image.png}
-                  class="h-full w-full object-cover saturate-[1.02] transition duration-500 group-hover:scale-[1.02]"
-                />
-              )}
+              <Picture
+                base={service.image.base}
+                alt={service.image.alt}
+                sizes="(min-width: 1024px) 620px, (min-width: 640px) 50vw, 100vw"
+                class="h-full w-full object-cover saturate-[1.02] transition duration-500 group-hover:scale-[1.02]"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden="true"
+              ></div>
             </div>
 
             <div

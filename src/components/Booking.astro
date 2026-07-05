@@ -36,7 +36,7 @@ import Compliance from "./Compliance.astro";
               </h3>
               <p class="mt-2 text-sm text-muted">{booking.discovery.blurb}</p>
               <div class="mt-5">
-                <Button href={booking.url} variant="primary" external class="w-full sm:w-auto">
+                <Button href={booking.url} variant="primary" external magnetic class="w-full sm:w-auto">
                   {booking.discovery.label}
                 </Button>
               </div>
@@ -54,9 +54,8 @@ import Compliance from "./Compliance.astro";
           </div>
 
           <p class="mt-8 text-xs leading-relaxed text-faint">
-            Scheduling opens in a new window via {booking.platform}. When your
-            Calendly link is ready, all buttons on this site will point there —
-            update <code class="rounded bg-sand/50 px-1 py-0.5 text-[0.7rem]">src/data/site.ts</code> only.
+            Scheduling opens in a new window. You'll receive a confirmation with
+            everything you need for our time together.
           </p>
         </div>
 

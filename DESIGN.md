@@ -151,8 +151,37 @@ Lead paragraphs use `text-lg sm:text-xl`; eyebrow labels are small caps (see §6
 # ──────────────────────────────────────────────
 # 5. ANIMATION
 # ──────────────────────────────────────────────
-# No GSAP / ScrollTrigger. Motion is CSS transitions + a tiny IntersectionObserver
-# + native CSS View Transitions. Everything respects `prefers-reduced-motion`.
+# The motion language is intentionally CINEMATIC-but-organic: rich, layered,
+# and alive — never neon or sci-fi. No GSAP / ScrollTrigger / WebGL. Motion is
+# CSS transitions + CSS scroll-driven animations (`animation-timeline`) + a tiny
+# IntersectionObserver + native CSS View Transitions, plus a little rAF JS for
+# the hero mouse-parallax, count-up stats, and magnetic buttons. Everything
+# degrades gracefully and respects `prefers-reduced-motion` (see below).
+
+## Cinematic hero layer
+
+- **Aurora**: two slow-drifting radial-gradient blobs (`.aurora-blob`,
+  sage + gold) behind the hero copy — GPU `transform` keyframes (`drift-a/b`).
+- **Grain**: an inline SVG `feTurbulence` noise tile (`.grain::after`), blended
+  low for filmic depth.
+- **Parallax**: the hero photo drifts on scroll via `animation-timeline: scroll()`
+  (`.hero-parallax`); the aurora drifts toward the cursor via rAF mouse-parallax.
+- **Headline**: word-by-word rise on load (`.hero-word`, staggered by `--i`).
+- **Count-up**: numeric hero stats tick up from 0 when revealed (`[data-countup]`).
+
+## Scroll choreography
+
+- **Directional reveals**: `.reveal-left` / `.reveal-right` (observed alongside
+  `.reveal`) slide in from the side.
+- **Section parallax**: `.parallax-slow` drifts an image as it passes through
+  view (`animation-timeline: view()`), e.g. the Mirror band.
+- **Scroll-progress bar**: a thin gold→clay bar (`.scroll-progress`, fixed top)
+  scales with page scroll via `animation-timeline: scroll(root)`.
+- **Magnetic buttons**: primary CTAs (`data-magnetic`) drift subtly toward the
+  cursor (desktop + motion-OK only).
+
+Scroll-driven pieces are wrapped in `@supports (animation-timeline: scroll())`
+so unsupported browsers simply get the static/reveal baseline.
 
 ## Easing
 
@@ -357,7 +386,7 @@ Soft, diffuse, warm-tinted (ink at low opacity). Never hard/black drop shadows.
 # 6. MIRROR       — Reflective interlude
 # 7. ABOUT        — Practitioner intro + credentials
 # 8. RESOURCES    — Downloads / tools (warm accent cards)
-# 9. TESTIMONIALS — Social proof
+# 9. TESTIMONIALS — Cinematic ethos quote band (client stories added later, with consent)
 # 10. BOOKING     — Discovery call / 1:1 (Calendly-ready)
 # 11. FAQ         — Common questions
 # 12. CONNECT     — Contact + social links
@@ -373,14 +402,21 @@ Soft, diffuse, warm-tinted (ink at low opacity). Never hard/black drop shadows.
 - Keep generous whitespace and unhurried vertical rhythm between sections
 - Use soft, diffuse, warm-tinted shadows (`--shadow-soft` / `--shadow-lift`)
 - Use serif display (Fraunces) for headings, sans (DM Sans) for everything else
-- Add motion through `.reveal` + `--ease-out-soft`; keep it gentle
-- Always honor `prefers-reduced-motion`
+- Lean cinematic: layered light (aurora), grain, parallax, word/scroll reveals —
+  drama comes from depth and choreography, not loud color
+- Reach for CSS scroll-driven animations (`animation-timeline`) before JS; keep
+  JS to tiny rAF helpers (mouse-parallax, count-up, magnetic buttons)
+- Serve responsive images through `<Picture>` (AVIF/WebP/JPG + `sizes`) with
+  intrinsic `width`/`height` so nothing shifts (zero CLS)
+- Use serif display (Fraunces) for headings, sans (DM Sans) for everything else
+- Always honor `prefers-reduced-motion` — every animation must have an off state
 - Style new tokens as Tailwind `@theme` variables in `global.css`
 
 ## DON'T
 
-- Never go dark sci-fi / neon — this is a calm, light wellness brand
+- Never go neon / sci-fi — cinematic here means warm, organic light, not lasers
 - Never add Three.js, WebGL, GSAP, or a JS framework for effects
+- Never let motion block interaction, cause layout shift, or ignore reduced-motion
 - Never use hard black drop shadows or harsh contrast
 - Never introduce a third font family or a mono font
 - Never set headings to bold — display headings stay weight 400

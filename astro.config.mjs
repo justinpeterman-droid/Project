@@ -7,6 +7,12 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://hometownserenity.com",
   integrations: [sitemap()],
+  // Prefetch in-viewport links on hover/tap for instant navigation
+  // (ClientRouter is already enabled for View Transitions).
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "viewport",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
