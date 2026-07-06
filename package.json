@@ -10,6 +10,7 @@
     "preview": "astro preview",
     "og": "node scripts/generate-og.mjs",
     "images": "node scripts/generate-image-variants.mjs",
+    "csp:hashes": "node scripts/csp-hashes.mjs",
     "astro": "astro"
   },
   "license": "UNLICENSED",
