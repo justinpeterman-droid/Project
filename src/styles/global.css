@@ -21,15 +21,15 @@
   --color-forest-2: #1f2a21;
 
   /* Warm accents */
-  --color-clay: #bd7b53; /* primary CTA terracotta */
-  --color-clay-deep: #a3623c; /* CTA hover */
+  --color-clay: #bd7b53; /* terracotta accent (dots, tints, glows) */
+  --color-clay-deep: #8c5330; /* CTA + eyebrow text — AA on light surfaces */
   --color-gold: #c2a24c; /* luxe hairlines / small accents */
 
   /* Ink */
   --color-ink: #20190f; /* headings */
   --color-loam: #382c1f; /* body text */
-  --color-muted: #6f6354; /* secondary text */
-  --color-faint: #a99a86; /* tertiary / captions */
+  --color-muted: #665c50; /* secondary text — AA on canvas/linen */
+  --color-faint: #736553; /* tertiary / captions — AA on light surfaces */
 
   /* Typography — self-hosted variable fonts (see Layout.astro imports) */
   --font-display: "Fraunces Variable", ui-serif, Georgia, "Times New Roman", serif;
@@ -427,7 +427,6 @@
   @keyframes stack-recede {
     to {
       transform: scale(0.92) translateY(-0.75rem);
-      opacity: 0.55;
     }
   }
 

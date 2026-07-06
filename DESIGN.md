@@ -57,15 +57,15 @@
   --color-forest-2:  #1f2a21; /* Forest hover / deepest green */
 
   /* ── Warm accents ── */
-  --color-clay:      #bd7b53; /* Primary CTA terracotta */
-  --color-clay-deep: #a3623c; /* CTA hover, eyebrow text, focus ring */
+  --color-clay:      #bd7b53; /* Terracotta accent (dots, tints, glows) */
+  --color-clay-deep: #8c5330; /* CTA bg + eyebrow text — AA (4.5:1+) on light surfaces */
   --color-gold:      #c2a24c; /* Luxe hairlines / small accents */
 
   /* ── Ink (type) ── */
   --color-ink:   #20190f;     /* Headings */
   --color-loam:  #382c1f;     /* Body text */
-  --color-muted: #6f6354;     /* Secondary text */
-  --color-faint: #a99a86;     /* Tertiary / captions */
+  --color-muted: #665c50;     /* Secondary text — AA on canvas/linen */
+  --color-faint: #736553;     /* Tertiary / captions — AA on light surfaces */
 }
 ```
 
