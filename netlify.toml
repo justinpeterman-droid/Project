@@ -17,12 +17,32 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Content-Security-Policy.
+    # script-src is locked to 'self' + sha256 hashes of the three inline
+    # scripts (Header scroll/menu, reveal+magnetic, hero count-up/parallax).
+    # If any inline <script> changes, regenerate hashes: `npm run csp:hashes`
+    # (build first) and paste the values below. style-src needs 'unsafe-inline'
+    # for inline style="" attributes; img-src needs data: for the grain SVG.
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src https://calendar.app.google https://*.jotform.com; script-src 'self' 'sha256-6gvmine+nptFIA+1J5K5ts7Jkk3DdtIRZKyDshtjMqE=' 'sha256-K0AjLIBitcdc9pLLw+gi/r6EaUDPECBg76ezybpmVtU=' 'sha256-KjsEKfTge/5KllC5kpLj7Zt/KUcGg6gHAr9SwdXtJUs='; upgrade-insecure-requests"
+    # Enable HSTS ONLY after hometownserenity.com is live on Netlify over HTTPS:
+    # Strict-Transport-Security = "max-age=31536000; includeSubDomains"
 
-# Long-cache hashed assets
+# Long-cache hashed assets (fingerprinted by Astro/Vite)
 [[headers]]
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Images are stable content-wise; cache a month with a day of stale-while-revalidate.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/og-image.*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
 
 # When ready to retire the Canva site, point its links here and/or add a
 # redirect at the Canva side. Netlify only controls the custom domain.

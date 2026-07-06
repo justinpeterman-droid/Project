@@ -4,6 +4,8 @@ interface Props {
   variant?: "primary" | "secondary" | "ghost" | "light" | "forest";
   size?: "md" | "lg";
   external?: boolean;
+  /** Subtle cursor-follow "magnetic" effect (desktop, motion-OK only) */
+  magnetic?: boolean;
   class?: string;
 }
 
@@ -12,6 +14,7 @@ const {
   variant = "primary",
   size = "md",
   external = false,
+  magnetic = false,
   class: className = "",
 } = Astro.props;
 
@@ -25,7 +28,7 @@ const sizes = {
 
 const variants = {
   primary:
-    "bg-clay text-cream shadow-lift hover:-translate-y-0.5 hover:bg-clay-deep hover:shadow-[0_4px_20px_rgba(189,123,83,0.35)] focus-visible:outline-clay-deep",
+    "bg-clay-deep text-cream shadow-lift hover:-translate-y-0.5 hover:bg-[#733f22] hover:shadow-[0_4px_20px_rgba(140,83,48,0.4)] focus-visible:outline-clay-deep",
   secondary:
     "border border-sand bg-cream/80 text-ink backdrop-blur-sm hover:border-clay/40 hover:bg-cream",
   ghost: "text-clay-deep hover:bg-clay/10",
@@ -41,9 +44,10 @@ const target = external ? "_blank" : undefined;
 
 <a
   href={href}
-  class:list={[base, sizes[size], variants[variant], className]}
+  class:list={[base, sizes[size], variants[variant], "will-change-transform", className]}
   rel={rel}
   target={target}
+  data-magnetic={magnetic ? "" : undefined}
 >
   <slot />
 </a>

@@ -12,11 +12,12 @@ import Picture from "./Picture.astro";
   <div class="mx-auto max-w-6xl px-5 sm:px-8">
     <div class="flex flex-col gap-10 md:flex-row md:items-start md:gap-10 lg:gap-14">
       <figure
-        class="reveal mx-auto w-44 shrink-0 overflow-hidden rounded-2xl border border-sand bg-cream shadow-lift sm:w-48 md:mx-0 md:w-52 lg:w-56"
+        class="reveal-left mx-auto w-44 shrink-0 overflow-hidden rounded-2xl border border-sand bg-cream shadow-lift sm:w-48 md:mx-0 md:w-52 lg:w-56"
       >
         <Picture
           base={about.image.base}
           alt={about.image.alt}
+          sizes="(min-width: 768px) 224px, 176px"
           class="aspect-[3/4] w-full object-cover object-[center_15%]"
           loading="eager"
         />
@@ -64,12 +65,10 @@ import Picture from "./Picture.astro";
             {
               credentialBadges.map((badge) => (
                 <li>
-                  <img
-                    src={`${badge.base}.png`}
+                  <Picture
+                    base={badge.base}
                     alt={badge.alt}
-                    width="96"
-                    height="96"
-                    loading="lazy"
+                    png
                     class="h-20 w-20 object-contain opacity-95 transition hover:opacity-100 sm:h-24 sm:w-24"
                   />
                 </li>

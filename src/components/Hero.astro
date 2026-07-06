@@ -2,20 +2,28 @@
 import { site, booking, images } from "../data/site";
 import Button from "./Button.astro";
 import Picture from "./Picture.astro";
+
+// Split the tagline into words so each can rise in with a stagger.
+const headlineWords = site.tagline.split(" ");
 ---
 
 <section
-  class="relative min-h-[92vh] overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-32"
+  class="grain relative min-h-[92vh] overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-32"
   aria-labelledby="hero-heading"
 >
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+  <div class="hero-parallax pointer-events-none absolute inset-0" aria-hidden="true">
     <Picture
       base={images.hero.base}
       alt=""
       loading="eager"
       fetchpriority="high"
+      sizes="100vw"
       class="h-full w-full object-cover object-[center_40%] saturate-[1.06]"
     />
+  </div>
+  <div class="aurora" aria-hidden="true" data-hero-media>
+    <span class="aurora-blob aurora-gold"></span>
+    <span class="aurora-blob aurora-sage"></span>
   </div>
   <div
     class="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas/45 via-canvas/15 to-canvas/50"
@@ -37,9 +45,16 @@ import Picture from "./Picture.astro";
       <p class="reveal eyebrow">Holistic hypnotherapy &amp; behavioral coaching</p>
       <h1
         id="hero-heading"
-        class="reveal reveal-delay-1 mt-6 font-display text-4xl leading-[1.05] text-balance text-ink sm:text-5xl md:text-6xl lg:text-[3.75rem]"
+        class="mt-6 font-display text-4xl leading-[1.05] text-balance text-ink sm:text-5xl md:text-6xl lg:text-[3.75rem]"
       >
-        {site.tagline}
+        {
+          headlineWords.map((word, i) => (
+            <>
+              <span class="hero-word" style={`--i:${i}`}>{word}</span>
+              {" "}
+            </>
+          ))
+        }
       </h1>
       <p
         class="reveal reveal-delay-2 mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-muted sm:text-xl"
@@ -52,7 +67,7 @@ import Picture from "./Picture.astro";
       <div
         class="reveal reveal-delay-3 mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
       >
-        <Button href={booking.url} variant="primary" size="lg" external>
+        <Button href={booking.url} variant="primary" size="lg" external magnetic>
           {booking.discovery.label}
         </Button>
         <Button href="#services" variant="secondary" size="lg">
@@ -65,28 +80,83 @@ import Picture from "./Picture.astro";
       </p>
     </div>
 
-    <div
-      class="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3 sm:gap-5"
-      aria-label="Practice highlights"
+    <dl
+      class="hero-signal reveal reveal-delay-2 mx-auto mt-14 flex max-w-3xl flex-col divide-y divide-sand/50 overflow-hidden rounded-2xl border border-cream/60 bg-cream/55 shadow-lift backdrop-blur-md sm:flex-row sm:divide-x sm:divide-y-0"
+      aria-label="What working together feels like"
     >
-      <div class="hero-stat reveal reveal-delay-1">
-        <p class="hero-stat-value font-display text-4xl text-clay-deep sm:text-5xl">5</p>
-        <p class="hero-stat-label mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-sage-deep">
-          Integrative modalities
-        </p>
+      <div class="group flex-1 px-6 py-6 text-center transition-colors hover:bg-cream/40">
+        <dt class="font-display text-2xl leading-none text-clay-deep sm:text-3xl">Confidential</dt>
+        <dd class="mt-3 text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-sage-deep">
+          A private, safe space
+        </dd>
       </div>
-      <div class="hero-stat reveal reveal-delay-2">
-        <p class="hero-stat-value font-display text-4xl text-clay-deep sm:text-5xl">1:1</p>
-        <p class="hero-stat-label mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-sage-deep">
-          Personalized sessions
-        </p>
+      <div class="group flex-1 px-6 py-6 text-center transition-colors hover:bg-cream/40">
+        <dt class="font-display text-2xl leading-none text-clay-deep sm:text-3xl">Judgment-free</dt>
+        <dd class="mt-3 text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-sage-deep">
+          No fixing — just presence
+        </dd>
       </div>
-      <div class="hero-stat reveal reveal-delay-3">
-        <p class="hero-stat-value font-display text-4xl text-clay-deep sm:text-5xl">∞</p>
-        <p class="hero-stat-label mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-sage-deep">
-          Your rhythm, your pace
-        </p>
+      <div class="group flex-1 px-6 py-6 text-center transition-colors hover:bg-cream/40">
+        <dt class="font-display text-2xl leading-none text-clay-deep sm:text-3xl">At your pace</dt>
+        <dd class="mt-3 text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-sage-deep">
+          Your rhythm, always
+        </dd>
       </div>
-    </div>
+    </dl>
   </div>
+
+  <script is:inline>
+    (() => {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const fine = window.matchMedia("(pointer: fine)").matches;
+
+      // Count-up numeric hero stats when they scroll into view.
+      const runCountups = () => {
+        const els = document.querySelectorAll("[data-countup]:not([data-done])");
+        els.forEach((el) => {
+          const target = parseInt(el.getAttribute("data-countup"), 10);
+          if (!Number.isFinite(target)) return;
+          el.setAttribute("data-done", "");
+          if (reduce) { el.textContent = String(target); return; }
+          const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach((e) => {
+              if (!e.isIntersecting) return;
+              obs.disconnect();
+              const dur = 1100, t0 = performance.now();
+              const tick = (now) => {
+                const p = Math.min((now - t0) / dur, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = String(Math.round(target * eased));
+                if (p < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+            });
+          }, { threshold: 0.6 });
+          io.observe(el);
+        });
+      };
+
+      // Subtle mouse parallax on the hero photo (desktop, motion-OK only).
+      const initParallax = () => {
+        if (reduce || !fine) return;
+        const media = document.querySelector("[data-hero-media]");
+        if (!media || media.dataset.parallax) return;
+        media.dataset.parallax = "1";
+        let raf = 0;
+        window.addEventListener("pointermove", (ev) => {
+          if (raf) return;
+          raf = requestAnimationFrame(() => {
+            raf = 0;
+            const x = (ev.clientX / window.innerWidth - 0.5) * 22;
+            const y = (ev.clientY / window.innerHeight - 0.5) * 22;
+            media.style.setProperty("transform", `translate3d(${x}px, ${y}px, 0)`);
+          });
+        }, { passive: true });
+      };
+
+      const boot = () => { runCountups(); initParallax(); };
+      boot();
+      document.addEventListener("astro:page-load", boot);
+    })();
+  </script>
 </section>

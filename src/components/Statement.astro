@@ -1,0 +1,23 @@
+---
+// A full-bleed editorial statement. The line fills muted -> ink as it scrolls
+// through view (progressive enhancement; solid ink everywhere else).
+const line = "You were never broken — only waiting to remember who you are.";
+---
+
+<section class="relative overflow-hidden bg-canvas py-28 sm:py-40" aria-labelledby="statement-heading">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-60"
+    style="background: radial-gradient(ellipse 60% 50% at 50% 50%, color-mix(in srgb, var(--color-gold) 12%, transparent), transparent 70%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-5xl px-6 text-center sm:px-8">
+    <p class="reveal eyebrow mb-8">A gentle truth</p>
+    <p
+      id="statement-heading"
+      class="scroll-fill font-display text-3xl leading-[1.15] text-balance sm:text-5xl md:text-6xl md:leading-[1.12]"
+    >
+      {line}
+    </p>
+  </div>
+</section>
